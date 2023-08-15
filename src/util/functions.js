@@ -1,6 +1,6 @@
 export const utilFunctionUnitTimeToCreatedTime = (unix) => {
     const currentTime = Math.floor(Date.now() / 1000); // Current Unix time in seconds
-    const unixTime = Math.floor(unix / 1000);
+    const unixTime = Math.floor(unix / 1000); // devide by 1000 to align current unix
     const timeElapsed = currentTime - unixTime;
 
     if (timeElapsed < 60) {
