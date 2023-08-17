@@ -9,14 +9,14 @@ import {
     onRegisterShow
 } from "../../../redux/features/toggleSlice";
 import { updateWishList } from "../../../redux/features/userSlice";
-import { utilFunctionUnitTimeToCreatedTime } from "../../../util/functions";
+import { unitTimeToCreatedTimeHelper } from "../../../services/extra-services/extra-services";
 import ChatAndWhatsup from "../chat-whatsUp";
 import PostHeader from "../postHeader/postHeader";
 import RecentLikes from "../recentLikes/recentLikes";
 
 const Card = ({ post }) => {
     const dispatch = useDispatch();
-    const { user, wishList } = useSelector((state) => state.userSlice);
+    const { user } = useSelector((state) => state.userSlice);
 
     return (
         <Wrapper>
@@ -65,15 +65,14 @@ const Card = ({ post }) => {
                 onClick={() => {
                     dispatch(onPostToggle(post));
                 }}
-                className="px-3 pt-3"
-            >
+                className="px-3 pt-3">
 
                 {/* post title */}
-                <h5 className="text-sm capitalize text-lg lg:text-3xl font-semibold sm:tracking-tight text-gray-900 cursor-pointer">
+                <h4 className="mb-1 capitalize font-semibold text-gray-900 cursor-pointer">
                     {post?.title}
-                </h5>
+                </h4>
 
-                <div className="flex justify-between items-center ">
+                <div className="flex justify-between items-center py-1">
 
                     {/* top 3 likes */}
                     <RecentLikes key={post._id} likes={post.likes} />
@@ -82,12 +81,12 @@ const Card = ({ post }) => {
                     <span
                         className="bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded lg:mr-2">
                         <Clock />
-                        {utilFunctionUnitTimeToCreatedTime(post.createdAt)}
+                        {unitTimeToCreatedTimeHelper(post.createdAt)}
                     </span>
                 </div>
 
                 <div className="h-full">
-                    <div className="flex items-center justify-center mb-2 md:mb-0">
+                    <div className="flex items-center justify-center">
 
                         {/* post price */}
                         <span className="text-xl md:text-2xl font-bold py-1 text-gray-900 mr-1">

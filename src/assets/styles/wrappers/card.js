@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  padding: 4px;
   margin-bottom: 10px;
   user-select: none;
     position: relative;
@@ -51,4 +50,4 @@ export const Wrapper = styled.div`
   @media screen and (min-width: 769px) and (max-width: 1024px) {
 
   }
-`
+`;

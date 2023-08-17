@@ -1,16 +1,14 @@
-import React, { useState } from 'react'
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { BsHammer, BsTrash } from 'react-icons/bs';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Dots from '../../../assets/icons/dots';
 import Send from '../../../assets/icons/send';
-import { deletePost, setPostEdit } from '../../../redux/features/postsSlice';
-import { BsHammer } from 'react-icons/bs';
-import { BsTrash } from 'react-icons/bs';
+import { setPostEdit } from '../../../redux/features/postsSlice';
 
 
 const PostHeader = ({ post }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { user } = useSelector((state) => state.userSlice);
   const [displayOptions, setDisplayOptions] = useState(false);
   const nav = useNavigate();
@@ -45,12 +43,12 @@ const PostHeader = ({ post }) => {
             alt="avatar"
           />
         </div>
-        <span className="pl-1 flex">
+        <h5 className="pl-1 flex">
           {post?.creator_id.fullName?.firstName}
-          <span className="ml-1 hidden md:flex">
+          <label className="ml-1">
             {post?.creator_id.fullName?.lastName}
-          </span>
-        </span>
+          </label>
+        </h5>
       </div>
       <div
         className="z-10"
@@ -66,7 +64,7 @@ const PostHeader = ({ post }) => {
           onTouchCancel={() => closeNav()}
           onMouseOver={() => openNav()}
           onMouseLeave={() => closeNav()}
-          className="w-2/3 md:w-1/3 absolute bg-white shadow-xl rounded-b-xl hover:rounded-b-xl top-10 md:top-12 z-10 right-0"
+          className="w-2/3 md:w-1/3 absolute bg-white shadow-xl rounded-b-xl hover:rounded-b-xl top-11 md:top-10 xl:top-11 z-10 right-0"
         >
           <li
             onClick={() => closeNav()}
@@ -81,8 +79,8 @@ const PostHeader = ({ post }) => {
             <React.Fragment>
               <li
                 onClick={() => {
-                  closeNav()
-                  dispatch(setPostEdit(post, user))
+                  closeNav();
+                  dispatch(setPostEdit(post, user));
                   user?.role === "admin"
                     ? nav(`/admin/editPost`)
                     : nav(`/editPost`);
@@ -106,8 +104,8 @@ const PostHeader = ({ post }) => {
         </ul>
       )}
     </div>
-  )
+  );
 
-}
+};
 
-export default PostHeader
+export default PostHeader;

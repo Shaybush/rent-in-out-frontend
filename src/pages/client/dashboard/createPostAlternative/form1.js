@@ -1,22 +1,28 @@
 import React from "react";
 import ImageFill from "../../../../assets/icons/imageFill";
+import { deleteOnCancel } from "../../../../services/cloudinary-service/cloudinary-service";
 import { errorHandler } from "../../../../services/extra-services/extra-services";
 
 const Form1 = ({
-                   data,
-                   setDisplay,
-                   setImages,
-                   images,
-                   handleOnChange,
-               }) => {
+    data,
+    setDisplay,
+    setImages,
+    images,
+    handleOnChange,
+    setOnAdd
+}) => {
     const handleNext = () => {
         if (data.title === "") return errorHandler("You must provide a title");
         if (data.info === "") return errorHandler("You must provide a post info");
         if (data.img.length === 0)
             return errorHandler("You must provide at list one photo");
         setDisplay(true);
-    }
-
+    };
+    const closeUploadSection = () => {
+        setOnAdd(false);
+        if (images && images.length > 0) deleteOnCancel(images);
+    };
+    
     return (
         <React.Fragment>
             <form className="h-80 capitalize overflow-y-scroll">
@@ -55,35 +61,37 @@ const Form1 = ({
 
                 {/* upload post */}
                 {
-                    !images.length > 0 ? 
-                    <div className="flex flex-col w-full" onClick={() => setImages.open()}>
-                    <div
-                        className="cursor-pointer flex flex-col items-center justify-center bg-white w-full rounded-xl p-3 h-full border border-gray-200">
-                        <h2>Choose some photos</h2>
-                        {images && images.length > 0 ? (
-                            <h2 className="text-gray-900 top-4">Add More Photos</h2>
-                        ) : null}
-                        <ImageFill width={"60px"} height="60px"/>
-                    </div>
-                </div>
-                :
-                
-                // images uploaded
-                <div className="overflow-hidden border">
-                    <img src={images[0]?.url} alt="post" />
-                </div>
+                    !images.length > 0 ?
+                        <div className="flex flex-col w-full" onClick={() => setImages.open()}>
+                            <div
+                                className="cursor-pointer text-gray-500 flex flex-col items-center justify-center bg-white w-full rounded-xl p-3 h-full border border-gray-200">
+                                <h3 className="mb-2">Upload Images</h3>
+                                {images && images.length > 0 ? (
+                                    <h2 className="text-gray-900 top-4">Upload More</h2>
+                                ) : null}
+                                <ImageFill width={"60px"} height="60px" />
+                            </div>
+                        </div>
+                        :
+
+                        // images uploaded
+                        <div className="overflow-hidden border">
+                            <img src={images[0]?.url} alt="post" />
+                        </div>
                 }
             </form>
-
-            {/* next button */}
-            <div className="flex justify-end w-full mt-2">
-                <button
+            <div className="flex justify-end mt-2 mr-4">
+                <button className="flex-shrink-0 border-transparent focus:outline-none py-2 px-6 md:px-8 md:py-2 text-sm md:text-base cursor-pointer text-blue-400 hover:text-blue-700 rounded-xl" type="button"
+                    onClick={() => closeUploadSection()}>
+                    Cancel
+                </button>
+                <button className="flex-shrink-0 border-transparent focus:outline-none hover:border-transparent active:border-transparent bg-blue-400 hover:bg-blue-700 px-6 md:px-8 md:py-2 text-sm md:text-base cursor-pointer text-white rounded-xl"
                     onClick={() => {
-                        handleNext()
-                    }}
-                >
+                        handleNext();
+                    }}>
                     Next
                 </button>
+
             </div>
         </React.Fragment>
     );
