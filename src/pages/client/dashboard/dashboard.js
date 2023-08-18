@@ -64,7 +64,7 @@ const Dashboard = () => {
                 }
 
                 {/* loading card */}
-                {true && Array.from(Array(8)).map(() => (
+                {loading && Array.from(Array(8)).map(() => (
                     <LoadingCard key={crypto.randomUUID()} />
                 ))}
             </div>
