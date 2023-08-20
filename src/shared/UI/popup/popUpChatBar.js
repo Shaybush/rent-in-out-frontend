@@ -7,7 +7,7 @@ import { Wrapper } from "../../../assets/styles/wrappers/sideBarChatModel";
 
 const Backdrop = ({ action }) => {
     const dispatch = useDispatch();
-    // allowed scroll on modal load 
+    // allowed scrolling once modal closed 
     const closeModal = () => {
         document.body.style.overflow = 'unset';
     };
@@ -33,7 +33,7 @@ const PopUpOverlay = ({ action, children }) => {
         document.body.style.overflow = 'hidden';
     }, []);
 
-    // allowed scroll on modal load 
+    // allowed scrolling once modal closed 
     const closeModal = () => {
         document.body.style.overflow = 'unset';
     };
@@ -46,6 +46,7 @@ const PopUpOverlay = ({ action, children }) => {
                         onMouseOver={() => setOver(true)}
                         onMouseLeave={() => setOver(false)}
                         onClick={() => {
+                            closeModal();
                             dispatch(action());
                         }}
                     >
