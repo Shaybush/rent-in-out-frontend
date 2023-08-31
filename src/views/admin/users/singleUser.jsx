@@ -1,6 +1,6 @@
 import React from 'react';
 import { BsTrash } from 'react-icons/bs';
-import { doApiMethod } from '../../../services/axios-service/axios-service';
+import { doApiMethod } from '../../../api/services/axios-service/axios-service';
 
 const SingleUser = (props) => {
     const user = props.item;

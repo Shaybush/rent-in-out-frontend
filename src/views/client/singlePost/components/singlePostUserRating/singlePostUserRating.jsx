@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Star from "../../../assets/icons/star";
-import StarFill from "../../../assets/icons/starFill";
-import { onRegisterShow } from "../../../redux/features/toggleSlice";
-import { doApiMethod } from "../../../services/axios-service/axios-service";
+import Star from "../../../../../assets/icons/star";
+import StarFill from "../../../../../assets/icons/starFill";
+import { onRegisterShow } from "../../../../../redux/features/toggleSlice";
+import { doApiMethod } from "../../../../../api/services/axios-service/axios-service";
 import {
     errorHandler,
     successHandler,
-} from "../../../services/extra-services/extra-services";
+} from "../../../../../util/functions";
 
-const UserRating = ({ rank, post, setIsChange, isChange }) => {
+const SinglePostUserRating = ({ rank, post, setIsChange, isChange }) => {
     const dispatch = useDispatch();
     let userRanks = rank?.userRank ? rank.userRank : 0;
     const [fill, setFill] = useState(userRanks - 1);
@@ -70,4 +70,4 @@ const UserRating = ({ rank, post, setIsChange, isChange }) => {
     );
 };
 
-export default UserRating;
+export default SinglePostUserRating;

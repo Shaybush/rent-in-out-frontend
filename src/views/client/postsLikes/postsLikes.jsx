@@ -1,14 +1,14 @@
 import React from "react";
-import SingleLike from "./singleLike";
+import PostsLikesSingle from "./postsLikesSingle/postsLikesSingle";
 
-const Likes = ({ likes, action }) => {
+const PostsLikes = ({ likes, action }) => {
     return (
         <React.Fragment>
             <h2 className="text-center">Post Likes</h2>
             {likes?.length > 0 ? (
                 <ul className="dropdown overflow-y-scroll p-3 h-36 w-full mb-3 flex flex-col">
                     {likes?.map((item) => {
-                        return <SingleLike key={item._id} item={item} action={action} />;
+                        return <PostsLikesSingle key={item._id} item={item} action={action} />;
                     })}
                 </ul>
             ) : (
@@ -18,4 +18,4 @@ const Likes = ({ likes, action }) => {
     );
 };
 
-export default Likes;
+export default PostsLikes;

@@ -1,13 +1,13 @@
 import React, { useRef, useState } from "react";
 import { FaBan, FaCheckCircle } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { addCategory } from "../../../redux/features/categorieSlice";
+import { addCategory } from "../../../../../redux/features/categorieSlice";
 import {
   errorHandler,
   successHandler,
-} from "../../../util/functions";
+} from "../../../../../util/functions";
 
-const AddCategoryForm = ({ setIsChange, setOnAdd }) => {
+const CategoryForm = ({ setIsChange, setOnAdd }) => {
   const dispatch = useDispatch();
   const infoRef = useRef();
   const nameRef = useRef();
@@ -126,4 +126,4 @@ const AddCategoryForm = ({ setIsChange, setOnAdd }) => {
   );
 };
 
-export default AddCategoryForm;
+export default CategoryForm;

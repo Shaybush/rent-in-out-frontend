@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import Bell from "../../../assets/icons/bell";
-import Categories from "../../../assets/icons/categories";
-import Home from "../../../assets/icons/home";
-import Posts from "../../../assets/icons/posts";
-import Profile from "../../../assets/icons/profile";
-import Search from "../../../assets/icons/search";
-import SignIn from "../../../assets/icons/signIn";
-import SignOut from "../../../assets/icons/signOut";
-import Users from "../../../assets/icons/users";
-import WishList from "../../../assets/icons/wishlist";
-import { Logo, Wrapper } from "../../../assets/styles/wrappers/navbarAdmin";
+import Bell from "../../../../assets/icons/bell";
+import Categories from "../../../../assets/icons/categories";
+import Home from "../../../../assets/icons/home";
+import Posts from "../../../../assets/icons/posts";
+import Profile from "../../../../assets/icons/profile";
+import Search from "../../../../assets/icons/search";
+import SignIn from "../../../../assets/icons/signIn";
+import SignOut from "../../../../assets/icons/signOut";
+import Users from "../../../../assets/icons/users";
+import WishList from "../../../../assets/icons/wishlist";
+import { Logo, Wrapper } from "../../../../assets/styles/wrappers/navbarAdmin";
 import {
     onInboxToggle,
     onRegisterToggle,
     onSearchToggle,
-} from "../../../redux/features/toggleSlice";
-import { onLogout } from "../../../redux/features/userSlice";
-import Inbox from "../../../assets/icons/inbox";
+} from "../../../../redux/features/toggleSlice";
+import { onLogout } from "../../../../redux/features/userSlice";
+import Inbox from "../../../../assets/icons/inbox";
 
 const Header = () => {
     const nav = useNavigate();

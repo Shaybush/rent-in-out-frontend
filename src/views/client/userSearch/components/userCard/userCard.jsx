@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { onSearchToggle } from "../../../../redux/features/toggleSlice";
+import { onSearchToggle } from "../../../../../redux/features/toggleSlice";
 
 const UserCard = ({ item }) => {
     const dispatch = useDispatch();

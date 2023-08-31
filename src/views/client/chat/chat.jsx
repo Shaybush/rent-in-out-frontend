@@ -8,11 +8,11 @@ import { getUserInbox } from "../../../redux/features/userSlice";
 import {
     doApiMethod,
     doGetApiMethod,
-} from "../../../services/axios-service/axios-service";
-import { errorHandler } from "../../../services/extra-services/extra-services";
-import { secret } from "../../../services/secrets";
+} from "../../../api/services/axios-service/axios-service";
+import { errorHandler } from "../../../util/functions";
+import { secret } from "../../../util/secrets";
 import LoadingButton from "../../../shared/components/spinner-button/spinnerButton";
-import SingleMessage from "./singleMessage";
+import SingleMessage from "./components/singleMessage";
 
 const apiUrl = secret.SERVER_API_URL;
 

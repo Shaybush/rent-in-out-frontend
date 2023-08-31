@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import Bell from "../../../assets/icons/bell";
-import Dashboard from "../../../assets/icons/dashboard";
-import Inbox from "../../../assets/icons/inbox";
-import Profile from "../../../assets/icons/profile";
-import Search from "../../../assets/icons/search";
-import SignIn from "../../../assets/icons/signIn";
-import SignOut from "../../../assets/icons/signOut";
-import WishList from "../../../assets/icons/wishlist";
-import { Logo, Wrapper } from "../../../assets/styles/wrappers/navbarUser";
+import Bell from "../../../../assets/icons/bell";
+import Dashboard from "../../../../assets/icons/dashboard";
+import Inbox from "../../../../assets/icons/inbox";
+import Profile from "../../../../assets/icons/profile";
+import Search from "../../../../assets/icons/search";
+import SignIn from "../../../../assets/icons/signIn";
+import SignOut from "../../../../assets/icons/signOut";
+import WishList from "../../../../assets/icons/wishlist";
+import { Logo, Wrapper } from "../../../../assets/styles/wrappers/navbarUser";
 import {
     onInboxToggle,
     onLogout,
     onRegisterShow,
     onSearchToggle,
-} from "../../../redux/features/toggleSlice";
-import { secret } from '../../../services/secrets';
+} from "../../../../redux/features/toggleSlice";
+import { secret } from '../../../../util/secrets';
 
 const Header = () => {
     const nav = useNavigate();

@@ -5,7 +5,7 @@ import { useScroll } from "../../../hooks/useScroll";
 import { clearPosts, getPosts } from "../../../redux/features/postsSlice";
 import Card from "../../../shared/components/card";
 import LoadingCard from "../../../shared/components/loadingComponents/loadingCard";
-import CreatePost from "./createPostAlternative";
+import CreatePostAlternative from "./components/createPostAlternative";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -50,7 +50,7 @@ const Dashboard = () => {
               </button>
             </div>
           ) : (
-            <CreatePost setOnAdd={setOnAdd} />
+            <CreatePostAlternative setOnAdd={setOnAdd} />
           )}
         </div>
       )}

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Telephone from '../../../assets/icons/telephone';
-import UserRating from "./userRating";
+import Telephone from '../../../../../assets/icons/telephone';
+import SinglePostUserRating from "../singlePostUserRating/singlePostUserRating";
 
-const UserInfo = ({ owner, rank, post, isChange, setIsChange }) => {
+const SinglePostUserInfo = ({ owner, rank, post, isChange, setIsChange }) => {
     const [show, setIsShow] = useState(true);
     return (
         <div className="user-header capitalize mb-2 border p-2 relative">
@@ -45,7 +45,7 @@ const UserInfo = ({ owner, rank, post, isChange, setIsChange }) => {
                     )}
                 </button>
             </div>
-            <UserRating
+            <SinglePostUserRating
                 rank={rank}
                 post={post}
                 isChange={isChange}
@@ -55,4 +55,4 @@ const UserInfo = ({ owner, rank, post, isChange, setIsChange }) => {
     );
 };
 
-export default UserInfo;
+export default SinglePostUserInfo;

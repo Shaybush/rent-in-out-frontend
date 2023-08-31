@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-const SingleLike = ({ item, action }) => {
+const PostsLikesSingle = ({ item, action }) => {
 
     const dispatch = useDispatch();
     const nav = useNavigate();
@@ -63,4 +63,4 @@ const SingleLike = ({ item, action }) => {
     );
 };
 
-export default SingleLike;
+export default PostsLikesSingle;

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LetterEmail from '../../../assets/icons/letterEmail';
-import Location from '../../../assets/icons/location';
-import Telephone from '../../../assets/icons/telephone';
-import { Wrapper } from "../../../assets/styles/wrappers/footer";
-import { Logo } from '../../../assets/styles/wrappers/navbarUser';
-import ContactForm from '../../../shared/components/contactform';
+import LetterEmail from '../../../../assets/icons/letterEmail';
+import Location from '../../../../assets/icons/location';
+import Telephone from '../../../../assets/icons/telephone';
+import { Wrapper } from "../../../../assets/styles/wrappers/footer";
+import { Logo } from '../../../../assets/styles/wrappers/navbarUser';
+import ContactForm from '../../../../shared/components/contactform';
 
 const Footer = () => {
     return (

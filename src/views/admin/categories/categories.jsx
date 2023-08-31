@@ -4,8 +4,8 @@ import { Wrapper } from "../../../assets/styles/wrappers/table";
 import { getCatgories } from "../../../redux/features/categorieSlice";
 import PageNav from '../../../shared/UI/page-nav';
 import Controllers from "../../../shared/components/controllers";
-import AddCategoryForm from "./addCategoryForm";
-import CategoryItem from "./categoryItem";
+import CategoryForm from "./components/categoryForm/categoryForm";
+import CategoryItem from "./components/categoryItem/categoryItem";
 
 const Categories = () => {
     const dispatch = useDispatch();
@@ -64,7 +64,7 @@ const Categories = () => {
                             />
                         ))}
                         {onAdd && (
-                            <AddCategoryForm setOnAdd={setOnAdd} setIsChange={setIsChange} />
+                            <CategoryForm setOnAdd={setOnAdd} setIsChange={setIsChange} />
                         )}
                     </tbody>
                 </table>

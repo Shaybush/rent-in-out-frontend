@@ -2,11 +2,11 @@ import React, { useRef, useState } from "react";
 import Search from "../../../assets/icons/search";
 import { Wrapper } from "../../../assets/styles/wrappers/userSearch";
 import { onSearchToggle } from "../../../redux/features/toggleSlice";
-import { doGetApiMethod } from "../../../services/axios-service/axios-service";
-import { errorHandler } from "../../../services/extra-services/extra-services";
+import { doGetApiMethod } from "../../../api/services/axios-service/axios-service";
+import { errorHandler } from "../../../util/functions";
 import PopUPModel from "../../../shared/UI/popup/popUpModel";
 import NotFoundItems from "../../../shared/components/notFoundItems/notFoundItems";
-import UserCard from "./userCard";
+import UserCard from "./components/userCard";
 
 
 const UserSearch = () => {

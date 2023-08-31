@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { doGetApiMethod } from "../../../../services/axios-service/axios-service";
-import Card from "../../../../shared/components/card/card";
-import LoadingCard from "../../../../shared/components/loadingComponents/loadingCard/loadingCard";
+import { doGetApiMethod } from "../../../../../api/services/axios-service/axios-service";
+import Card from "../../../../../shared/components/card/card";
+import LoadingCard from "../../../../../shared/components/loadingComponents/loadingCard/loadingCard";
 
 const OwnPosts = ({ id }) => {
   const [posts, setPosts] = useState([]);

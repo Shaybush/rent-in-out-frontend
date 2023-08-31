@@ -1,14 +1,14 @@
 import { OpenStreetMapProvider } from "leaflet-geosearch";
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import Minus from "../../../../assets/icons/minus";
-import Plus from "../../../../assets/icons/plus";
-import { uploadPost } from "../../../../redux/features/postsSlice";
-import { doGetApiMethod } from "../../../../services/axios-service/axios-service";
-import { deleteOnCancel } from "../../../../services/cloudinary-service/cloudinary-service";
-import { errorHandler } from "../../../../services/extra-services/extra-services";
+import Minus from "../../../../../assets/icons/minus";
+import Plus from "../../../../../assets/icons/plus";
+import { uploadPost } from "../../../../../redux/features/postsSlice";
+import { doGetApiMethod } from "../../../../../api/services/axios-service/axios-service";
+import { deleteOnCancel } from "../../../../../api/services/cloudinary-service/cloudinary-service";
+import { errorHandler } from "../../../../../util/functions";
 
-const Form2 = ({
+const CreatePostAlternativeSecondForm = ({
   col,
   setCol,
   data,
@@ -208,4 +208,4 @@ const Form2 = ({
   );
 };
 
-export default Form2;
+export default CreatePostAlternativeSecondForm;

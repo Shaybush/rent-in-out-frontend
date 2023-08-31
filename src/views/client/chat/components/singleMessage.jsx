@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import ExitFill from "../../../assets/icons/exitFill";
-import ExitNoFill from "../../../assets/icons/exitNoFill";
-import { getUserInbox } from "../../../redux/features/userSlice";
-import { doApiMethod } from "../../../services/axios-service/axios-service";
+import ExitFill from "../../../../assets/icons/exitFill";
+import ExitNoFill from "../../../../assets/icons/exitNoFill";
+import { getUserInbox } from "../../../../redux/features/userSlice";
+import { doApiMethod } from "../../../../api/services/axios-service/axios-service";
 
 const SingleMessage = ({ msg, user, roomID, deleteMsg, location }) => {
     const dispatch = useDispatch();

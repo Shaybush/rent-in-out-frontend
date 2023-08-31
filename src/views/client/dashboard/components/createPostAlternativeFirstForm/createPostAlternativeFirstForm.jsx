@@ -1,9 +1,9 @@
 import React from "react";
-import ImageFill from "../../../../assets/icons/imageFill";
-import { deleteOnCancel } from "../../../../services/cloudinary-service/cloudinary-service";
-import { errorHandler } from "../../../../services/extra-services/extra-services";
+import ImageFill from "../../../../../assets/icons/imageFill";
+import { deleteOnCancel } from "../../../../../api/services/cloudinary-service/cloudinary-service";
+import { errorHandler } from "../../../../../util/functions";
 
-const Form1 = ({
+const CreatePostAlternativeFirstForm = ({
     data,
     setDisplay,
     setImages,
@@ -97,4 +97,4 @@ const Form1 = ({
     );
 };
 
-export default Form1;
+export default CreatePostAlternativeFirstForm;

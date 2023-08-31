@@ -7,8 +7,8 @@ import OpenEye from "../../../assets/icons/openEye";
 import { Button } from "../../../assets/styles/wrappers/registerPage";
 import { onLogout } from "../../../redux/features/toggleSlice";
 import { onLogin } from "../../../redux/features/userSlice";
-import { doApiMethod } from "../../../services/axios-service/axios-service";
-import { errorHandler, eyeShowHide, successHandler } from "../../../services/extra-services/extra-services";
+import { doApiMethod } from "../../../api/services/axios-service/axios-service";
+import { errorHandler, eyeShowHide, successHandler } from "../../../util/functions";
 import LoadingButton from '../../../shared/components/spinner-button/spinnerButton';
 
 const SignIn = (props) => {

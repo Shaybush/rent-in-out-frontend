@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import ArrowLeft from '../../../assets/icons/arrowLeft';
-import ArrowRight from '../../../assets/icons/arrowRight';
+import ArrowLeft from '../../../../../assets/icons/arrowLeft';
+import ArrowRight from '../../../../../assets/icons/arrowRight';
 
-const ImgController = ({ post }) => {
+const SinglePostImgController = ({ post }) => {
     const [image, setImage] = useState(0);
     const nextImg = () => {
         if (image + 1 > post.img.length - 1) return setImage(0);
@@ -35,4 +35,4 @@ const ImgController = ({ post }) => {
     );
 };
 
-export default ImgController;
+export default SinglePostImgController;

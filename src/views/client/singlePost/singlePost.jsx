@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Wrapper } from "../../../assets/styles/wrappers/singlePost";
 import { onPostToggle } from "../../../redux/features/toggleSlice";
-import { doGetApiMethod } from "../../../services/axios-service/axios-service";
+import { doGetApiMethod } from "../../../api/services/axios-service/axios-service";
 import PostHeader from "../../../shared/components/postHeader/postHeader";
 import PopUPModel from "../../../shared/UI/popup/popUpSinglePost";
 import BallTriangleLoader from "../../../shared/components/loader/ballTriangle/ballTriangle";
-import Likes from "../posts-likes/likes";
-import ImgController from "./imgController";
-import MapBylocation from "./mapBylocation";
-import PostInfo from "./postInfo";
-import UserInfo from "./userInfo";
+import PostsLikes from "../postsLikes/postsLikes";
+import SinglePostImgController from "./components/singlePostImgController/singlePostImgController";
+import SinglePostMapByLocation from "./components/singlePostMapByLocation/singlePostMapByLocation";
+import SinglePostInfo from "./components/singlePostInfo/singlePostInfo";
+import SinglePostUserInfo from "./components/singlePostUserInfo/singlePostUserInfo";
 
 import { useSelector } from "react-redux";
 
@@ -39,7 +39,7 @@ const SinglePost = ({ post }) => {
                 ) : (
                     // images
                     <section className="flex flex-wrap">
-                        <ImgController post={post} />
+                        <SinglePostImgController post={post} />
                         {/* post context */}
                         <main className="overflow-y-scroll">
                             <hr />
@@ -47,13 +47,13 @@ const SinglePost = ({ post }) => {
                             <hr />
                             <div className="flex flex-wrap mt-2">
                                 <div className="post-info md:w-1/2 border w-full">
-                                    <PostInfo post={post} owner={post.creator_id} user={user} />
+                                    <SinglePostInfo post={post} owner={post.creator_id} user={user} />
                                 </div>
                                 <div className="post-likes md:w-1/2 border w-full">
-                                    <Likes likes={post?.likes} action={onPostToggle} />
+                                    <PostsLikes likes={post?.likes} action={onPostToggle} />
                                 </div>
                             </div>
-                            <UserInfo
+                            <SinglePostUserInfo
                                 owner={post.creator_id}
                                 rank={rank}
                                 post={post}
@@ -61,7 +61,7 @@ const SinglePost = ({ post }) => {
                                 setIsChange={setIsChange}
                             />
                             <div className="p-2 overflow-hidden">
-                                <MapBylocation results={post?.collect_points} center={post?.collect_points[0]} />
+                                <SinglePostMapByLocation results={post?.collect_points} center={post?.collect_points[0]} />
                             </div>
                         </main>
                     </section>

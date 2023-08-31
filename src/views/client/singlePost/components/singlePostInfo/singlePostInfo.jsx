@@ -1,8 +1,8 @@
 import React from "react";
-import { availableTimeStampHelper, checkIfPostAvailableHelper, unitTimeToCreatedTimeHelper } from "../../../services/extra-services/extra-services";
-import ChatAndWhatsup from "../../../shared/components/chat-whatsUp";
+import { availableTimeStampHelper, checkIfPostAvailableHelper, unitTimeToCreatedTimeHelper } from "../../../../../util/functions";
+import ChatAndWhatsup from "../../../../../shared/components/chat-whatsUp";
 
-const PostInfo = ({ post, user, owner }) => {
+const SinglePostInfo = ({ post, user, owner }) => {
     return (
         <div className="h-full w-full mb-3">
             <h2 className="text-center">Product Info</h2>
@@ -23,4 +23,4 @@ const PostInfo = ({ post, user, owner }) => {
     );
 };
 
-export default PostInfo;
+export default SinglePostInfo;

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { secret } from "../../services/secrets";
+import { secret } from "../../../util/secrets";
 
 const apiUrl = secret.SERVER_API_URL;
 export const doGetApiMethod = async (_url) => {

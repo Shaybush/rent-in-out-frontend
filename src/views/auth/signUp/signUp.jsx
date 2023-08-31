@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "../../../assets/styles/wrappers/registerPage";
-import { doApiMethod } from "../../../services/axios-service/axios-service";
-import { errorHandler, successHandler } from "../../../services/extra-services/extra-services";
+import { doApiMethod } from "../../../api/services/axios-service/axios-service";
+import { errorHandler, successHandler } from "../../../util/functions";
 import {
     getCities,
     getCountries,
-} from "../../../services/get-locations-service/get-locations-service";
+} from "../../../api/services/get-locations-service/get-locations-service";
 import LoadingButton from "../../../shared/components/spinner-button/spinnerButton";
 
 const SignUp = (props) => {

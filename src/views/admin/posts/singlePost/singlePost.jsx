@@ -1,6 +1,6 @@
 import { BsTrash } from "react-icons/bs";
 import { useNavigate } from 'react-router-dom';
-import { doApiMethod } from "../../../api/services/axios-service/axios-service";
+import { doApiMethod } from "../../../../api/services/axios-service/axios-service";
 
 const SinglePost = ({ post, setIsChange }) => {
     const nav = useNavigate();

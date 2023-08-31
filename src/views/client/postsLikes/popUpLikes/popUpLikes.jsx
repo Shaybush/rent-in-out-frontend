@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react";
-import Search from "../../../../../assets/icons/search";
-import { onLikesToggle } from "../../../../../redux/features/toggleSlice";
-import PopUPModel from "../../../../../shared/UI/popup/popUpModel";
-import NotFoundItems from "../../../../../shared/components/notFoundItems/notFoundItems";
-import SingleLike from "../../singleLike";
+import Search from "../../../../assets/icons/search";
+import { onLikesToggle } from "../../../../redux/features/toggleSlice";
+import PopUPModel from "../../../../shared/UI/popup/popUpModel";
+import NotFoundItems from "../../../../shared/components/notFoundItems/notFoundItems";
+import PostsLikesSingle from "../postsLikesSingle/postsLikesSingle";
 
 const PopUpLikes = ({ likesArr }) => {
     const likesArrBackup = [...likesArr];
@@ -49,7 +49,7 @@ const PopUpLikes = ({ likesArr }) => {
             <ul className="overflow-y-scroll max-h-96 px-3 w-full pb-3">
                 {likes_ar.length ? likes_ar?.map((item) => {
                     return (
-                        <SingleLike key={item._id} item={item} action={onLikesToggle} />
+                        <PostsLikesSingle key={item._id} item={item} action={onLikesToggle} />
                     );
                 }) :
                     <NotFoundItems inputRef={inpRef.current?.value}/>

@@ -1,6 +1,6 @@
 import React from 'react';
 import Profile from '../profile';
-import BannerProfile from '../profile/bannerProfile';
+import BannerProfile from '../profile/components/bannerProfile';
 
 const MyProfile = () => {
     return (

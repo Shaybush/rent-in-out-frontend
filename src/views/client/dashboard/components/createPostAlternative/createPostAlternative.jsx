@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Wrapper } from "../../../../assets/styles/wrappers/postUi";
-import { secret } from "../../../../services/secrets";
-import { useUploadWidget } from "../../../../shared/components/uploadWidget";
-import Form1 from "./form1";
-import Form2 from "./form2";
+import { Wrapper } from "../../../../../assets/styles/wrappers/postUi";
+import { secret } from "../../../../../util/secrets";
+import { useUploadWidget } from "../../../../../shared/components/uploadWidget";
+import CreatePostAlternativeFirstForm from "../createPostAlternativeFirstForm/createPostAlternativeFirstForm";
+import CreatePostAlternativeSecondForm from "../createPostAlternativeSecondForm/createPostAlternativeSecondForm";
 
-const CreatePost = ({setOnAdd}) => {
+const CreatePostAlternative = ({setOnAdd}) => {
     const [display, setDisplay] = useState(false);
     const [col, setCol] = useState(1);
     const [data, setData] = useState({
@@ -58,7 +58,7 @@ const CreatePost = ({setOnAdd}) => {
                     </div>
                 </div>
                 {!display && (
-                    <Form1
+                    <CreatePostAlternativeFirstForm
                         data={data}
                         handleOnChange={handleOnChange}
                         setDisplay={setDisplay}
@@ -68,7 +68,7 @@ const CreatePost = ({setOnAdd}) => {
                     />
                 )}
                 {display && (
-                    <Form2
+                    <CreatePostAlternativeSecondForm
                         col={col}
                         setCol={setCol}
                         handleOnChange={handleOnChange}
@@ -85,4 +85,4 @@ const CreatePost = ({setOnAdd}) => {
     );
 };
 
-export default CreatePost;
+export default CreatePostAlternative;

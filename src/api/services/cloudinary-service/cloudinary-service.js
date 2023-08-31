@@ -1,5 +1,5 @@
-import { doApiMethod } from '../../api/axios-service/axios-service';
-import { errorHandler } from '../extra-services/extra-services';
+import { doApiMethod } from '../axios-service/axios-service';
+import { errorHandler } from '../../../util/functions';
 
 export const deleteProfileImage = async (img_id) => {
     let url = `/users/cloudinary/profileDel/?id=${img_id}`;

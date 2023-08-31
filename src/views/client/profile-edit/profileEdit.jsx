@@ -7,8 +7,8 @@ import { upload } from "../../../redux/features/userSlice";
 import {
     doApiMethod,
     doGetApiMethod,
-} from "../../../services/axios-service/axios-service";
-import { errorHandler } from "../../../services/extra-services/extra-services";
+} from "../../../api/services/axios-service/axios-service";
+import { errorHandler } from "../../../util/functions";
 
 const ProfileEdit = () => {
     const nav = useNavigate();

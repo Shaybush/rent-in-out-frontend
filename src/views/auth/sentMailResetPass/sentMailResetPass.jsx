@@ -4,9 +4,9 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Button } from "../../../assets/styles/wrappers/registerPage";
 import { onLogout } from "../../../redux/features/toggleSlice";
-import { doApiMethod } from '../../../services/axios-service/axios-service';
-import { errorHandler, successHandler } from "../../../services/extra-services/extra-services";
-import { secret } from '../../../services/secrets';
+import { doApiMethod } from '../../../api/services/axios-service/axios-service';
+import { errorHandler, successHandler } from "../../../util/functions";
+import { secret } from '../../../util/secrets';
 import LoadingButton from '../../../shared/components/spinner-button/spinnerButton';
 
 const SentMailResetPass = (props) => {

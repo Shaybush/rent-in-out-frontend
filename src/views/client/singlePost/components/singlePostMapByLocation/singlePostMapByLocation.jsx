@@ -1,6 +1,6 @@
 import { MapContainer, Marker, TileLayer, Tooltip } from "react-leaflet";
 
-const MapBylocation = ({ results, center }) => {
+const SinglePostMapByLocation = ({ results, center }) => {
     return (
         <MapContainer center={[center?.y, center?.x]} zoom={15} scrollWheelZoom={false}>
             <TileLayer
@@ -16,4 +16,4 @@ const MapBylocation = ({ results, center }) => {
     );
 };
 
-export default MapBylocation;
+export default SinglePostMapByLocation;

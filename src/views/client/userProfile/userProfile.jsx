@@ -6,9 +6,9 @@ import Location from '../../../assets/icons/location';
 import Mail from '../../../assets/icons/mail';
 import Telephone from '../../../assets/icons/telephone';
 import { Wrapper } from '../../../assets/styles/wrappers/userProfile';
-import { doGetApiMethod } from '../../../services/axios-service/axios-service';
+import { doGetApiMethod } from '../../../api/services/axios-service/axios-service';
 import Loader from '../../../shared/components/loader/loader';
-import OwnPosts from '../myProfile/ownPosts';
+import OwnPosts from '../myProfile/components/ownPosts';
 
 const UserProfile = () => {
     const nav = useNavigate();

@@ -4,8 +4,8 @@ import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button, Wrapper } from "../../../assets/styles/wrappers/registerPage";
 import { onRegisterShow } from "../../../redux/features/toggleSlice";
-import { doApiMethod } from "../../../services/axios-service/axios-service";
-import { errorHandler, successHandler } from "../../../services/extra-services/extra-services";
+import { doApiMethod } from "../../../api/services/axios-service/axios-service";
+import { errorHandler, successHandler } from "../../../util/functions";
 import PopUPModel from "../../../shared/UI/popup/registerModel";
 import LoadingButton from "../../../shared/components/spinner-button/spinnerButton";
 

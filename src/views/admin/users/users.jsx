@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Wrapper } from "../../../assets/styles/wrappers/table";
-import { doGetApiMethod } from "../../../services/axios-service/axios-service";
+import { doGetApiMethod } from "../../../api/services/axios-service/axios-service";
 import PageNav from "../../../shared/UI/page-nav/page-nav";
 import Controllers from "../../../shared/components/controllers/controllers";
 import SingleUser from "./singleUser";

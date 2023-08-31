@@ -1,9 +1,9 @@
 import React from "react";
 import { FaCamera } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import { secret } from "../../../../services/secrets";
-import Loader from "../../../../shared/components/loader/loader";
-import { useUploadWidget } from "../../../../shared/components/uploadWidget";
+import { secret } from "../../../../../util/secrets";
+import Loader from "../../../../../shared/components/loader/loader";
+import { useUploadWidget } from "../../../../../shared/components/uploadWidget";
 
 const BannerProfile = () => {
     const { user } = useSelector((state) => state.userSlice);
