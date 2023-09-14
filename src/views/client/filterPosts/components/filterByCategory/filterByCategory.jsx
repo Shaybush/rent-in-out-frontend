@@ -32,11 +32,11 @@ const FilterByCategory = () => {
 
       {/* chips list */}
       <div className='px-2 md:px-0 md:w-3/4 md:mx-auto'>
-        <Chips
+        {chips && <Chips
           variant={'unFill'}
           size={'sm'}
           chipsProp={chips}
-          setChipsProp={setChips} />
+          setChipsProp={setChips} />}
       </div>
 
     </React.Fragment>

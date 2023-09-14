@@ -7,7 +7,7 @@ import { onPostSearchToggle } from '../../../../../redux/features/toggleSlice';
 
 const PopUpFilterSearch = () => {
   return (
-    <PopUPModel action={onPostSearchToggle} >
+    <PopUPModel className={'py-4'} action={onPostSearchToggle} >
       {/* filters header */}
       <div className="filters-header flex justify-center items-center">
         <span className='pr-2'>

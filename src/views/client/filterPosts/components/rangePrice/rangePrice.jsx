@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const RangePrice = () => {
+  const [values, setValues] = useState({
+    min: 0,
+    max: 1000
+  });
   return (
     <React.Fragment>
       {/* header */}
@@ -13,7 +17,7 @@ const RangePrice = () => {
       <div className='px-2 md:px-0 md:w-3/4 md:mx-auto'>
         <div className='flex items-center'>
           <div>
-            <input type="number" id="visitors" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-none block w-full p-2.5" placeholder="Min" required />
+            <input value={values.min} type="number" id="visitors" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-none block w-full p-2.5" placeholder="Min" required />
           </div>
 
           <div className='p-3 text-2xl'>
@@ -21,7 +25,7 @@ const RangePrice = () => {
           </div>
 
           <div>
-            <input type="number" id="visitors" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-none block w-full p-2.5" placeholder="Max" required />
+            <input value={values.max} type="number" id="visitors" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-none block w-full p-2.5" placeholder="Max" required />
           </div>
 
         </div>
