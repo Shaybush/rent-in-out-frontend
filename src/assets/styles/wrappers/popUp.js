@@ -17,7 +17,7 @@ export const Wrapper = styled.div`
     left: 25%;
     width: 60%;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-    z-index: 999;
+    z-index: 40;
     animation: slide-down 600ms ease-in-out forwards;
 
     &-header-exit {

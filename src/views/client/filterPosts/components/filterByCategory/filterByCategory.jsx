@@ -24,14 +24,14 @@ const FilterByCategory = () => {
   };
 
   return (
-    <React.Fragment>
+    <div className="mb-3">
       {/* header */}
-      <div className='px-2 md:px-0 md:w-3/4 md:mx-auto pb-2'>
+      <div className='md:px-0 pb-2'>
         <div className='text-lg p-0'>Filter by category</div>
       </div>
 
       {/* chips list */}
-      <div className='px-2 md:px-0 md:w-3/4 md:mx-auto'>
+      <div className='md:px-0'>
         {chips && <Chips
           variant={'unFill'}
           size={'sm'}
@@ -39,7 +39,7 @@ const FilterByCategory = () => {
           setChipsProp={setChips} />}
       </div>
 
-    </React.Fragment>
+    </div>
   );
 };
 
