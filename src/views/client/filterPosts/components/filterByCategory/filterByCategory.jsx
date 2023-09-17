@@ -1,8 +1,8 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Chips from "../../../../../shared/components/chips/chips";
 import { doGetApiMethod } from "../../../../../api/services/axios-service/axios-service";
 
-const FilterByCategory = () => {
+const FilterByCategory = ({ setFilterForm, filterForm }) => {
   const [chips, setChips] = useState([]);
 
   useMemo(async () => {
@@ -18,9 +18,17 @@ const FilterByCategory = () => {
         _id: chip._id,
         name: chip.name,
         info: chip.info,
-        check: false
+        check: checkChips(chip) || false
       };
     });
+  };
+
+  const checkChips = (chip) => {
+    if (filterForm) {
+      return filterForm?.categories?.some(filterChip => {
+        return filterChip._id === chip._id;
+      });
+    }
   };
 
   return (
@@ -33,8 +41,9 @@ const FilterByCategory = () => {
       {/* chips list */}
       <div className='md:px-0'>
         {chips && <Chips
-          variant={'unFill'}
+          setForm={setFilterForm}
           size={'sm'}
+          variant={'unFill'}
           chipsProp={chips}
           setChipsProp={setChips} />}
       </div>

@@ -7,18 +7,12 @@ import { errorHandler } from "../../util/functions";
 
 export const getPosts = createAsyncThunk(
   "posts/get",
-  async ({
-    search = "",
-    option = "createdAt",
-    page = 1,
-    min = 0,
-    max = 1000,
-    endScreenEnd,
-    setPage,
-  }) => {
+  async ({ option = "createdAt", page = 1, endScreenEnd, setPage }) => {
     try {
+      // get filters from local storage
+      const filterPosts = JSON.parse(localStorage["filterForm"]);
       if (page === 1) clearPosts();
-      // let url = `/posts/search?page=${page}&reverse=yes&sort=${option}`;
+      // let url = `/posts/search/s=${filterPosts.search}?page=${page}&reverse=yes&sort=${option}`;
       let url = `/posts?page=${page}&sort=${option}&reverse=yes`;
       let { data } = await doGetApiMethod(url);
       if (data.length > 0) {
@@ -66,6 +60,8 @@ export const likePost = createAsyncThunk("likePost/like", async ({ id }) => {
     errorHandler(error);
   }
 });
+
+// Initial values for state
 const initialState = {
   posts: [],
   loading: false,
