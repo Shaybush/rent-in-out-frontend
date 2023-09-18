@@ -9,13 +9,18 @@ export const getPosts = createAsyncThunk(
   "posts/get",
   async ({ option = "createdAt", page = 1, endScreenEnd, setPage }) => {
     try {
+      let filterForm;
       // get filters from local storage
-      const filterPosts = JSON.parse(localStorage["filterForm"]);
+      if (localStorage["filterForm"]) {
+        filterForm = JSON.parse(localStorage["filterForm"]);
+      }
       if (page === 1) clearPosts();
-      // let url = `/posts/search/s=${filterPosts.search}?page=${page}&reverse=yes&sort=${option}`;
-      let url = `/posts?page=${page}&sort=${option}&reverse=yes`;
+      const categoriesArr = filterForm?.categories
+        .map((category) => category.url_name)
+        ?.join(",");
+      let url = `/posts/search?s=${filterForm?.search}&page=${page}&reverse=yes&sort=${option}&max=${filterForm?.maxPrice}&min=${filterForm?.minPrice}&categories=${categoriesArr}`;
       let { data } = await doGetApiMethod(url);
-      if (data.length > 0) {
+      if (data.count > 0) {
         endScreenEnd();
         setPage(page + 1);
       }
@@ -91,15 +96,17 @@ const postsSlice = createSlice({
       })
       .addCase(getPosts.fulfilled, (state, action) => {
         state.loading = false;
-        state.posts = [...state.posts, ...action?.payload];
-        state.posts = state.posts.filter((element) => {
-          const isDuplicate = state.posts.includes(element._id);
-          if (!isDuplicate) {
-            state.posts.push(element._id);
-            return true;
-          }
-          return false;
-        });
+        if (action.payload.count > 0) {
+          state.posts = [...state.posts, ...action.payload.posts];
+          state.posts = state.posts?.filter((element) => {
+            const isDuplicate = state.posts.includes(element._id);
+            if (!isDuplicate) {
+              state.posts.push(element._id);
+              return true;
+            }
+            return false;
+          });
+        }
       })
       .addCase(getPosts.rejected, (state, action) => {
         state.loading = false;

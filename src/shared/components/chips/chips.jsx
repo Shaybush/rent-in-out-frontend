@@ -26,14 +26,14 @@ const chipVariants = cva(
   }
 );
 
-const Chips = ({ chipsProp, setChipsProp, setForm, className, variant, size, ...props }) => {
+const Chips = ({ chipsProp, setChipsProp, setForm, showChipsCount = 7, className, variant, size, ...props }) => {
   const [arrSlice1, setArrSlice1] = useState([]);
   const [arrSlice2, setArrSlice2] = useState([]);
   const [isOpenMoreOptions, setIsOpenMoreOptions] = useState(false);
 
   useEffect(() => {
-    setArrSlice1(chipsProp.slice(0, 5));
-    setArrSlice2(chipsProp.slice(5));
+    setArrSlice1(chipsProp.slice(0, showChipsCount));
+    setArrSlice2(chipsProp.slice(showChipsCount));
   }, [chipsProp]);
 
   const handleChecked = (id) => {

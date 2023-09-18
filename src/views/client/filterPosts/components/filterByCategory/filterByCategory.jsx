@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo, useState } from "react";
-import Chips from "../../../../../shared/components/chips/chips";
+import React, { useMemo, useState } from "react";
 import { doGetApiMethod } from "../../../../../api/services/axios-service/axios-service";
+import Chips from "../../../../../shared/components/chips/chips";
 
 const FilterByCategory = ({ setFilterForm, filterForm }) => {
   const [chips, setChips] = useState([]);
@@ -18,6 +18,7 @@ const FilterByCategory = ({ setFilterForm, filterForm }) => {
         _id: chip._id,
         name: chip.name,
         info: chip.info,
+        url_name: chip.url_name,
         check: checkChips(chip) || false
       };
     });
