@@ -8,20 +8,24 @@ import { errorHandler } from "../../util/functions";
 export const getPosts = createAsyncThunk(
   "posts/get",
   async ({
-    search = "",
     option = "createdAt",
     page = 1,
-    min = 0,
-    max = 1000,
     endScreenEnd,
     setPage,
+    searchParams,
   }) => {
+    console.log(searchParams.get("s"));
     try {
       if (page === 1) clearPosts();
-      // let url = `/posts/search?page=${page}&reverse=yes&sort=${option}`;
-      let url = `/posts?page=${page}&sort=${option}&reverse=yes`;
+      let url = `/posts/search?searchQ=${searchParams.get(
+        "s"
+      )}&page=${page}&reverse=yes&sort=${option}&max=${searchParams.get(
+        "price_max"
+      )}&min=${searchParams.get("price_min")}&categories=${searchParams.get(
+        "categories"
+      )}`;
       let { data } = await doGetApiMethod(url);
-      if (data.length > 0) {
+      if (data.count > 0) {
         endScreenEnd();
         setPage(page + 1);
       }
@@ -66,6 +70,8 @@ export const likePost = createAsyncThunk("likePost/like", async ({ id }) => {
     errorHandler(error);
   }
 });
+
+// Initial values for state
 const initialState = {
   posts: [],
   loading: false,
@@ -95,15 +101,17 @@ const postsSlice = createSlice({
       })
       .addCase(getPosts.fulfilled, (state, action) => {
         state.loading = false;
-        state.posts = [...state.posts, ...action?.payload];
-        state.posts = state.posts.filter((element) => {
-          const isDuplicate = state.posts.includes(element._id);
-          if (!isDuplicate) {
-            state.posts.push(element._id);
-            return true;
-          }
-          return false;
-        });
+        if (action?.payload?.count > 0) {
+          state.posts = [...state.posts, ...action.payload.posts];
+          state.posts = state.posts?.filter((element) => {
+            const isDuplicate = state.posts.includes(element._id);
+            if (!isDuplicate) {
+              state.posts.push(element._id);
+              return true;
+            }
+            return false;
+          });
+        }
       })
       .addCase(getPosts.rejected, (state, action) => {
         state.loading = false;
