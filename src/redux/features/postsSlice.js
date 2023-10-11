@@ -17,8 +17,7 @@ export const getPosts = createAsyncThunk(
     console.log(searchParams.get("s"));
     try {
       if (page === 1) clearPosts();
-      let url = `/posts/search?
-      search=${searchParams.get(
+      let url = `/posts/search?searchQ=${searchParams.get(
         "s"
       )}&page=${page}&reverse=yes&sort=${option}&max=${searchParams.get(
         "price_max"
