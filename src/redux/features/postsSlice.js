@@ -23,13 +23,6 @@ export const getPosts = createAsyncThunk(
       )}&min=${searchParams.get("price_min")}&categories=${searchParams.get(
         "categories"
       )}`;
-      let url = `/posts/search?searchQ=${searchParams.get(
-        "s"
-      )}&page=${page}&reverse=yes&sort=${option}&max=${searchParams.get(
-        "price_max"
-      )}&min=${searchParams.get("price_min")}&categories=${searchParams.get(
-        "categories"
-      )}`;
       let { data } = await doGetApiMethod(url);
       if (data.count > 0) {
         endScreenEnd();
