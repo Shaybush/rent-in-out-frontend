@@ -222,7 +222,7 @@ const Header = () => {
                         <div className="flex justify-between items-center cursor-pointer">
                             <span>
                                 Filter Posts
-                                <span className="ml-2"><CircleBadge count={countSearchParams()} /></span>
+                                {countSearchParams() > 0 && <span className="ml-2"><CircleBadge count={countSearchParams()} /></span>}
                             </span>
                             <span className="pr-1">
                                 <Search />
