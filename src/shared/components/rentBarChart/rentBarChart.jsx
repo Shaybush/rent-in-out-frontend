@@ -1,0 +1,48 @@
+import React from "react";
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  Legend,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
+import { randomSetOfColors } from "../../../util/functions";
+
+const RentBarChart = ({
+  config,
+  width = "100%",
+  height = "400px",
+  backgroundColor = "transparent",
+  activeLegend = true,
+  opacity = 0.7,
+}) => {
+  const colors = randomSetOfColors(config.length);
+
+  return (
+    <div
+      className="bar-chart-wrapper"
+      style={{ width: width, height: height, backgroundColor: backgroundColor }}
+    >
+      <ResponsiveContainer>
+        <BarChart data={config}>
+          <XAxis dataKey="name" tickLine={false} axisLine={false} />
+          <YAxis yAxisId="a" tickLine={false} axisLine={false} />
+          {activeLegend && <Legend />}
+          <Tooltip cursor={false} />
+          <CartesianGrid vertical={false} />
+          <Bar yAxisId="a" dataKey="Category" opacity={opacity}>
+            {config.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={colors[index]} />
+            ))}
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
+  );
+};
+
+export default RentBarChart;
