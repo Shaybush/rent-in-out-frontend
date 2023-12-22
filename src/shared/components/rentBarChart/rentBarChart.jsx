@@ -20,7 +20,7 @@ const RentBarChart = ({
   activeLegend = true,
   opacity = 0.7,
 }) => {
-  const colors = randomSetOfColors(config.length);
+  const colors = randomSetOfColors(config?.length);
 
   return (
     <div

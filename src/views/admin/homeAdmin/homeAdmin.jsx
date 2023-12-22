@@ -87,7 +87,7 @@ const HomeAdmin = () => {
       {/* posts by category */}
       <RentCard styleClass={"mb-4 shadow-lg"}>
         <h4 className="ps-3 mb-4 font-semibold text-center">Category:</h4>
-        <RentBarChart config={[]} activeLegend={false} />
+        <RentBarChart config={null} activeLegend={false} />
       </RentCard>
 
       {/* users by date */}
