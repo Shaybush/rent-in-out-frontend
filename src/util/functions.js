@@ -119,3 +119,6 @@ export const randomColor = () => `#${Math.random().toString(16).slice(2, 8).padE
 
 /** return array of hex colors */
 export const randomSetOfColors = (num) => Array.from({ length: num }, () => randomColor());
+
+/** Check if number is not defined. */
+export const isNumberEmpty = (number) => number === undefined || number === null || number < 1;

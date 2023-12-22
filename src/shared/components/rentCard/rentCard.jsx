@@ -4,12 +4,12 @@ const RentCard = ({
   children,
   styleClass,
   isColored = false,
-  bottomColor = "#8884d8",
+  bottomColor = "",
   bottomContent,
 }) => {
   return (
     <div
-      className={`bg-white border shadow- border-gray-200 rounded-lg ${styleClass}`}
+      className={`bg-white border hover:shadow-lg border-gray-200 rounded-lg ${styleClass}`}
     >
       <div className={`p-4 h-[calc(100%-16px)] w-full`}>{children}</div>
       {isColored && (

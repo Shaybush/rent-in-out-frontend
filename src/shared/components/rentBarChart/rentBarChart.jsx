@@ -29,10 +29,23 @@ const RentBarChart = ({
     >
       <ResponsiveContainer>
         <BarChart data={config}>
-          <XAxis dataKey="name" tickLine={false} axisLine={false} />
+          <XAxis
+            dataKey="name"
+            tickLine={false}
+            axisLine={false}
+            tick={false}
+          />
           <YAxis yAxisId="a" tickLine={false} axisLine={false} />
           {activeLegend && <Legend />}
           <Tooltip cursor={false} />
+          <Legend
+            payload={config.map((item, index) => ({
+              id: item.name,
+              type: "square",
+              value: item.name,
+              color: colors[index],
+            }))}
+          />
           <CartesianGrid vertical={false} />
           <Bar yAxisId="a" dataKey="Category" opacity={opacity}>
             {config.map((entry, index) => (
