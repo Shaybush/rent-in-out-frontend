@@ -122,3 +122,5 @@ export const randomSetOfColors = (num) => Array.from({ length: num }, () => rand
 
 /** Check if number is not defined. */
 export const isNumberEmpty = (number) => number === undefined || number === null || number < 1;
+
+export const isArrayEmpty = (arr) => arr === undefined || arr === null || arr.length === 0;

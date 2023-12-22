@@ -10,7 +10,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { randomSetOfColors } from "../../../util/functions";
+import { isArrayEmpty, randomSetOfColors } from "../../../util/functions";
 
 const RentBarChart = ({
   config,
@@ -27,33 +27,37 @@ const RentBarChart = ({
       className="bar-chart-wrapper"
       style={{ width: width, height: height, backgroundColor: backgroundColor }}
     >
-      <ResponsiveContainer>
-        <BarChart data={config}>
-          <XAxis
-            dataKey="name"
-            tickLine={false}
-            axisLine={false}
-            tick={false}
-          />
-          <YAxis yAxisId="a" tickLine={false} axisLine={false} />
-          {activeLegend && <Legend />}
-          <Tooltip cursor={false} />
-          <Legend
-            payload={config.map((item, index) => ({
-              id: item.name,
-              type: "square",
-              value: item.name,
-              color: colors[index],
-            }))}
-          />
-          <CartesianGrid vertical={false} />
-          <Bar yAxisId="a" dataKey="Category" opacity={opacity}>
-            {config.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={colors[index]} />
-            ))}
-          </Bar>
-        </BarChart>
-      </ResponsiveContainer>
+      {!isArrayEmpty(config) ? (
+        <ResponsiveContainer>
+          <BarChart data={config}>
+            <XAxis
+              dataKey="name"
+              tickLine={false}
+              axisLine={false}
+              tick={false}
+            />
+            <YAxis yAxisId="a" tickLine={false} axisLine={false} />
+            {activeLegend && <Legend />}
+            <Tooltip cursor={false} />
+            <Legend
+              payload={config.map((item, index) => ({
+                id: item.name,
+                type: "square",
+                value: item.name,
+                color: colors[index],
+              }))}
+            />
+            <CartesianGrid vertical={false} />
+            <Bar yAxisId="a" dataKey="Category" opacity={opacity}>
+              {config.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={colors[index]} />
+              ))}
+            </Bar>
+          </BarChart>
+        </ResponsiveContainer>
+      ) : (
+        <div className="flex items-center justify-center h-full">no data</div>
+      )}
     </div>
   );
 };
