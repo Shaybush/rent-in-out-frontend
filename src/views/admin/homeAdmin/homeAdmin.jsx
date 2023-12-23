@@ -14,12 +14,14 @@ const HomeAdmin = () => {
   const [categoriesCount, setCategoriesCount] = useState(0);
   const [postCount, setPostsCount] = useState(0);
   const [postsByCategory, setPostsByCategory] = useState([]);
+  const [usersByDate, setUsersByDate] = useState([]);
 
   useEffect(() => {
     getUsersCount();
     getCategoriesCount();
     getPostsCount();
     getPostsByCategory();
+    getUsersByDate();
   }, []);
 
   const getUsersCount = async () => {
@@ -52,6 +54,21 @@ const HomeAdmin = () => {
     });
   };
 
+  const getUsersByDate = async () => {
+    const { data } = await doGetApiMethod("/users/users-by-date");
+    const mappedUsersByDate = mapUsersByDate(data);
+    setUsersByDate(mappedUsersByDate);
+  };
+
+  const mapUsersByDate = (users) => {
+    return users.map((userByDate) => {
+      return {
+        name: userByDate.date,
+        users: userByDate.count,
+      };
+    });
+  };
+
   // config
   const data = [
     {
@@ -78,22 +95,33 @@ const HomeAdmin = () => {
 
   return (
     <React.Fragment>
-      <div className="flex gap-2 mt-5">
-        <UsersWizard count={usersCount} />
-        <CategoriesWizard count={categoriesCount} />
-        <PostsWizard count={postCount} />
+      <div className="flex flex-wrap mt-5">
+        {/* users count */}
+        <div className="px-2 w-full md:w-1/3 mb-4">
+          <UsersWizard count={usersCount} />
+        </div>
+
+        {/* categories count */}
+        <div className="px-2 w-full md:w-1/3 mb-4">
+          <CategoriesWizard count={categoriesCount} />
+        </div>
+
+        {/* posts count */}
+        <div className="px-2 w-full md:w-1/3 mb-4">
+          <PostsWizard count={postCount} />
+        </div>
       </div>
 
       {/* posts by category */}
       <RentCard styleClass={"mb-4 shadow-lg"}>
-        <h4 className="ps-3 mb-4 font-semibold text-center">Category:</h4>
-        <RentBarChart config={null} activeLegend={false} />
+        <h4 className="ps-3 mb-4 font-semibold text-center">Categories:</h4>
+        <RentBarChart config={postsByCategory} activeLegend={false} />
       </RentCard>
 
       {/* users by date */}
       <RentCard styleClass={"shadow-lg mb-4"}>
         <h4 className="ps-3 mb-4 font-semibold text-center">Users:</h4>
-        <RentLineChart config={data} />
+        <RentLineChart config={usersByDate} />
       </RentCard>
     </React.Fragment>
   );

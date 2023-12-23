@@ -18,7 +18,7 @@ const RentBarChart = ({
   height = "400px",
   backgroundColor = "transparent",
   activeLegend = true,
-  opacity = 0.7,
+  opacity = 0.85,
 }) => {
   const colors = randomSetOfColors(config?.length);
 

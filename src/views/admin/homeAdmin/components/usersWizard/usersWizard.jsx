@@ -9,12 +9,12 @@ const UsersWizard = ({ count }) => {
 
   return (
     <RentCard
-      styleClass={`cursor-pointer w-1/3 mb-4`}
+      styleClass={`cursor-pointer`}
       isColored={!isNumberEmpty(count)}
       bottomColor={"#8884d8"}
     >
       {!isNumberEmpty(count) ? (
-        <div onClick={() => nav("users")} className="flex items-center">
+        <div onClick={() => nav("/admin/users")} className="flex items-center">
           <div className="w-3/4">
             <h2 className="py-3 font-semibold">{count}</h2>
             <h2>Active Users</h2>

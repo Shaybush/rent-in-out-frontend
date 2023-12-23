@@ -9,12 +9,12 @@ const PostsWizard = ({ count }) => {
 
   return (
     <RentCard
-      styleClass={`cursor-pointer w-1/3 mb-4`}
+      styleClass={`cursor-pointer`}
       isColored={!isNumberEmpty(count)}
       bottomColor={"#333333"}
     >
       {!isNumberEmpty(count) ? (
-        <div onClick={() => nav("posts")} className="flex items-center">
+        <div onClick={() => nav("/admin/posts")} className="flex items-center">
           <div className="w-3/4">
             <h2 className="py-3 font-semibold">{count}</h2>
             <h2>Total Posts</h2>
