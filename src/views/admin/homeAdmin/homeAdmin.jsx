@@ -114,13 +114,15 @@ const HomeAdmin = () => {
 
       {/* posts by category */}
       <RentCard styleClass={"mb-4 shadow-lg"}>
-        <h4 className="ps-3 mb-4 font-semibold text-center">Categories:</h4>
+        <h4 className="ps-3 mb-4 font-semibold text-center">All Categories:</h4>
         <RentBarChart config={postsByCategory} activeLegend={false} />
       </RentCard>
 
       {/* users by date */}
       <RentCard styleClass={"shadow-lg mb-4"}>
-        <h4 className="ps-3 mb-4 font-semibold text-center">Users:</h4>
+        <h4 className="ps-3 mb-4 font-semibold text-center">
+          Users Count By Date:
+        </h4>
         <RentLineChart config={usersByDate} />
       </RentCard>
     </React.Fragment>
