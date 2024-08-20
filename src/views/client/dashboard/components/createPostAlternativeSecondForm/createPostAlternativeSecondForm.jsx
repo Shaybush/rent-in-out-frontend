@@ -16,9 +16,8 @@ const CreatePostAlternativeSecondForm = ({
   setDisplay,
   handleOnChange,
   setOnAdd,
-  images
+  images,
 }) => {
-
   let searchProvider = new OpenStreetMapProvider();
   const dispatch = useDispatch();
   const colRef = useRef();
@@ -28,11 +27,15 @@ const CreatePostAlternativeSecondForm = ({
   const [collection, setCollection] = useState({ val: "", i: 0 });
 
   useMemo(() => {
-    setIsDisable(!(data.country.length > 0 &&
-      data.city.length > 0 &&
-      data.collect_points.length > 0 &&
-      data.category_url.length > 0 &&
-      data.price > 0));
+    setIsDisable(
+      !(
+        data.country.length > 0 &&
+        data.city.length > 0 &&
+        data.collect_points.length > 0 &&
+        data.category_url.length > 0 &&
+        data.price > 0
+      )
+    );
   }, [data]);
 
   useState(async () => {
@@ -86,7 +89,7 @@ const CreatePostAlternativeSecondForm = ({
         <div className="flex-flex-col content-between w-full ">
           <div className="flex w-full">
             <input
-              value={data?.price}
+              value={data?.price || undefined}
               className="mt-2 mr-1"
               name="price"
               type="number"
@@ -193,12 +196,19 @@ const CreatePostAlternativeSecondForm = ({
         </div>
       </form>
       <div className="flex justify-between px-2">
-        <button onClick={() => setDisplay(false)} className="flex-shrink-0 border-transparent py-2 border-4 px-6 md:px-8 md:py-2 text-sm md:text-base cursor-pointer text-blue-400 hover:text-blue-700 rounded-xl" type="button">
+        <button
+          onClick={() => setDisplay(false)}
+          className="flex-shrink-0 border-transparent py-2 border-4 px-6 md:px-8 md:py-2 text-sm md:text-base cursor-pointer text-blue-400 hover:text-blue-700 rounded-xl"
+          type="button"
+        >
           Back
         </button>
         <div className="flex items-center">
-          <button className="flex-shrink-0 border-transparent py-2 border-4 px-6 md:px-8 md:py-2 text-sm md:text-base cursor-pointer text-blue-400 hover:text-blue-700 rounded-xl" type="button"
-            onClick={() => closeUploadSection()}>
+          <button
+            className="flex-shrink-0 border-transparent py-2 border-4 px-6 md:px-8 md:py-2 text-sm md:text-base cursor-pointer text-blue-400 hover:text-blue-700 rounded-xl"
+            type="button"
+            onClick={() => closeUploadSection()}
+          >
             Cancel
           </button>
           <button
