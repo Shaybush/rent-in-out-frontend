@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import ImageFill from "../../../../../assets/icons/imageFill";
 import { deleteOnCancel } from "../../../../../api/services/cloudinary-service/cloudinary-service";
 import { errorHandler } from "../../../../../util/functions";
-
+import { ImagePreview } from "../../../../../shared/components/image-preview/ImagePreview";
 const CreatePostAlternativeFirstForm = ({
   data,
   setDisplay,
@@ -33,7 +33,7 @@ const CreatePostAlternativeFirstForm = ({
 
   return (
     <React.Fragment>
-      <form className="h-80 capitalize">
+      <form className="h-80 capitalize overflow-auto">
         <div className="flex flex-col w-full">
           {/* post title */}
           <input
@@ -65,7 +65,6 @@ const CreatePostAlternativeFirstForm = ({
             <option value="long-term">long-term</option>
           </select>
         </div>
-
         {/* upload post */}
         {!images.length > 0 ? (
           <div
@@ -82,8 +81,15 @@ const CreatePostAlternativeFirstForm = ({
           </div>
         ) : (
           // images uploaded
-          <div className="overflow-hidden border">
-            <img src={images[0]?.url} alt="post" />
+          <div className="overflow-auto border flex gap-5 p-4">
+            {images.map((img) => (
+              <ImagePreview
+                key={img.img_id}
+                id={img.img_id}
+                src={img.url}
+                alt={img.alt}
+              ></ImagePreview>
+            ))}
           </div>
         )}
       </form>
