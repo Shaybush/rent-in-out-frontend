@@ -14,6 +14,8 @@ const BannerProfile = () => {
     const [banner, setBanner, loadBanner] = useUploadWidget({
         userID: user._id,
         folder: 'banner',
+        cropping: true,
+        showSkipCropButton: true,
         single: true,
     });
 
@@ -21,6 +23,8 @@ const BannerProfile = () => {
     const [profile, setProfile, loadImg] = useUploadWidget({
         userID: user._id,
         folder: 'profile',
+        cropping: true,
+        showSkipCropButton: true,
         single: true,
     });
     return (
