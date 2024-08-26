@@ -4,7 +4,6 @@ import { errorHandler } from '../../../util/functions';
 // TODO - Dekel use this service 
 export const deleteSingleImage = async (img_id) => {
   let url = `/cloudinary/image`;
-  debugger;
   try {
     const { data } = await doApiMethod(url, "DELETE", { img_id });
     return data.result;

@@ -57,7 +57,6 @@ export function useUploadWidget({
     const setNewCloudinaryImage = async ({ newImageUrl, url, img_id, type }) => {
         try {
             // TODO - try to reduce to one request (improve backend)
-            debugger;
             let { data } = await doApiMethod(url, "PATCH", newImageUrl);
             await deleteSingleImage(img_id);
             // upload redux parameters
