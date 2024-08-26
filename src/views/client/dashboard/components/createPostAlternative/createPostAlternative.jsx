@@ -7,7 +7,7 @@ import CreatePostAlternativeFirstForm from "../createPostAlternativeFirstForm/cr
 import CreatePostAlternativeSecondForm from "../createPostAlternativeSecondForm/createPostAlternativeSecondForm";
 
 const CreatePostAlternative = ({ setOnAdd }) => {
-  const [display, setDisplay] = useState(true);
+  const [display, setDisplay] = useState(false);
   const [col, setCol] = useState(1);
   const [data, setData] = useState({
     title: "",
