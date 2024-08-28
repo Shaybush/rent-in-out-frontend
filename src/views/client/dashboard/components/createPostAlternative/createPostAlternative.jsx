@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Wrapper } from "../../../../../assets/styles/wrappers/postUi";
-import { secret } from "../../../../../util/secrets";
 import { useUploadWidget } from "../../../../../shared/components/uploadWidget";
 import CreatePostAlternativeFirstForm from "../createPostAlternativeFirstForm/createPostAlternativeFirstForm";
 import CreatePostAlternativeSecondForm from "../createPostAlternativeSecondForm/createPostAlternativeSecondForm";
@@ -21,12 +20,10 @@ const CreatePostAlternative = ({ setOnAdd }) => {
     country: "",
   });
   const { user } = useSelector((state) => state.userSlice);
-  const [images, setImages] = useUploadWidget({
+  const [images, cloudinaryModal, setImages, isLoading] = useUploadWidget({
     userID: user._id,
-    cloudName: secret.POST_CLOUDINARY_NAME,
-    uploadPreset: secret.POST_CLOUDINARY_PRESET,
     single: false,
-    postTitle: data?.title,
+    folder: "posts",
   });
 
   useEffect(() => {
@@ -62,6 +59,7 @@ const CreatePostAlternative = ({ setOnAdd }) => {
             data={data}
             handleOnChange={handleOnChange}
             setDisplay={setDisplay}
+            cloudinaryModal={cloudinaryModal}
             setImages={setImages}
             images={images}
             setOnAdd={setOnAdd}

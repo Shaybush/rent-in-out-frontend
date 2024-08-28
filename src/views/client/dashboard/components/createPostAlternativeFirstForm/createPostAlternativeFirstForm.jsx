@@ -1,6 +1,9 @@
 import React, { useMemo, useState } from "react";
 import ImageFill from "../../../../../assets/icons/imageFill";
-import { deleteOnCancel } from "../../../../../api/services/cloudinary-service/cloudinary-service";
+import {
+  deleteOnCancel,
+  deleteSingleImage,
+} from "../../../../../api/services/cloudinary-service/cloudinary-service";
 import { errorHandler } from "../../../../../util/functions";
 import { ImagePreview } from "../../../../../shared/components/image-preview/ImagePreview";
 const CreatePostAlternativeFirstForm = ({
@@ -88,6 +91,7 @@ const CreatePostAlternativeFirstForm = ({
                 id={img.img_id}
                 src={img.url}
                 alt={img.alt}
+                onDeleteImg={() => deleteSingleImage(img.id)}
               ></ImagePreview>
             ))}
           </div>
