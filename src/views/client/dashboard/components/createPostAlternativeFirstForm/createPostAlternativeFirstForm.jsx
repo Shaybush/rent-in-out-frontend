@@ -13,6 +13,7 @@ const CreatePostAlternativeFirstForm = ({
   images,
   handleOnChange,
   setOnAdd,
+  cloudinaryModal,
 }) => {
   const [isDisable, setIsDisable] = useState(true);
 
@@ -29,15 +30,22 @@ const CreatePostAlternativeFirstForm = ({
       return errorHandler("You must provide at list one photo");
     setDisplay(true);
   };
+
   const closeUploadSection = () => {
     setOnAdd(false);
     if (images && images.length > 0) deleteOnCancel(images);
   };
 
+  const handleDeleteImg = (imgId) => {
+    const updatedImageList = images.filter((img) => img.img_id !== imgId);
+    setImages(updatedImageList);
+    deleteSingleImage(imgId);
+  };
+
   return (
     <React.Fragment>
-      <form className="h-80 capitalize overflow-auto">
-        <div className="flex flex-col w-full">
+      <form className="h-80 capitalize overflow-auto flex flex-col gap-2">
+        <div className="flex flex-col w-full gap-2">
           {/* post title */}
           <input
             type="text"
@@ -72,7 +80,7 @@ const CreatePostAlternativeFirstForm = ({
         {!images.length > 0 ? (
           <div
             className="flex flex-col w-full"
-            onClick={() => setImages.open()}
+            onClick={() => cloudinaryModal.open()}
           >
             <div className="cursor-pointer text-gray-500 flex flex-col items-center justify-center bg-white w-full rounded-xl p-3 h-full border border-gray-200">
               <h3 className="mb-2">Upload Images</h3>
@@ -91,7 +99,7 @@ const CreatePostAlternativeFirstForm = ({
                 id={img.img_id}
                 src={img.url}
                 alt={img.alt}
-                onDeleteImg={() => deleteSingleImage(img.id)}
+                onDeleteImg={() => handleDeleteImg(img.img_id)}
               ></ImagePreview>
             ))}
           </div>

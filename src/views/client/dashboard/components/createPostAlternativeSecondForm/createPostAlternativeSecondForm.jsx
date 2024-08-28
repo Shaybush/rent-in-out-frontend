@@ -9,6 +9,7 @@ import { deleteOnCancel } from "../../../../../api/services/cloudinary-service/c
 import Minus from "../../../../../assets/icons/minus";
 import { uploadPost } from "../../../../../redux/features/postsSlice";
 import { errorHandler } from "../../../../../util/functions";
+import { getButtonsProps } from "./createPostAlternativeSecondFormProps";
 
 const CreatePostAlternativeSecondForm = ({
   data,
@@ -21,7 +22,6 @@ const CreatePostAlternativeSecondForm = ({
   const dispatch = useDispatch();
   const [isDisable, setIsDisable] = useState(true);
   const [category, setCategory] = useState();
-  const [map, setMap] = useState(null);
   const [provider] = useState(new OpenStreetMapProvider());
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
@@ -31,9 +31,12 @@ const CreatePostAlternativeSecondForm = ({
 
   useEffect(() => {
     getCategories();
-    getMap();
+    const mapInstance = L.map("map").setView([32.0853, 34.7818], 13); // Coordinates for the center of the map
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "© OpenStreetMap contributors",
+    }).addTo(mapInstance);
 
-    return () => getMap().remove();
+    return () => mapInstance.remove();
   }, []);
 
   useEffect(() => {
@@ -53,16 +56,6 @@ const CreatePostAlternativeSecondForm = ({
     doGetApiMethod(url).then((response) => {
       setCategory(response.data);
     });
-  };
-
-  const getMap = () => {
-    const mapInstance = L.map("map").setView([32.0853, 34.7818], 13); // Coordinates for the center of the map
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution: "© OpenStreetMap contributors",
-    }).addTo(mapInstance);
-
-    setMap(mapInstance);
-    return mapInstance;
   };
 
   const handleInputChange = async (e) => {
@@ -134,7 +127,7 @@ const CreatePostAlternativeSecondForm = ({
       <form className="min-h-min mb-4 capitalize flex flex-col gap-3">
         <div className="flex gap-2 w-full">
           <input
-            value={data?.price || undefined}
+            value={data?.price || ""}
             name="price"
             type="number"
             placeholder="Price"
@@ -217,7 +210,6 @@ const CreatePostAlternativeSecondForm = ({
               placeholder="Type an Address"
               style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
             />
-
             {suggestions.length > 0 && (
               <ul
                 className="absolute z-[10000] w-full"
@@ -244,32 +236,27 @@ const CreatePostAlternativeSecondForm = ({
         </div>
       </form>
       <div className="flex justify-between px-2">
-        <button
-          onClick={() => setDisplay(false)}
-          className="flex-shrink-0 border-transparent py-2 border-4 px-6 md:px-8 md:py-2 text-sm md:text-base cursor-pointer text-blue-400 hover:text-blue-700 rounded-xl"
-          type="button"
-        >
-          Back
-        </button>
-        <div className="flex items-center">
-          <button
-            className="flex-shrink-0 border-transparent py-2 border-4 px-6 md:px-8 md:py-2 text-sm md:text-base cursor-pointer text-blue-400 hover:text-blue-700 rounded-xl"
-            type="button"
-            onClick={() => closeUploadSection()}
-          >
-            Cancel
-          </button>
-          <button
-            onClick={() => {
-              handleUpload();
-            }}
-            disabled={isDisable}
-            className="flex-shrink-0 border-transparent hover:border-transparent active:border-transparent bg-blue-400 hover:bg-blue-700 px-6 md:px-8 md:py-2 text-sm md:text-base cursor-pointer text-white rounded-xl disabled:cursor-not-allowed disabled:text disabled:hover:bg-blue-400"
-            type="submit"
-          >
-            Upload
-          </button>
-        </div>
+        {getButtonsProps(
+          setDisplay,
+          closeUploadSection,
+          handleUpload,
+          isDisable
+        ).map((buttonsGroup) => (
+          <div>
+            {buttonsGroup.map(
+              ({ handleClick, disabled, className, type, text }) => (
+                <button
+                  onClick={handleClick}
+                  disabled={disabled}
+                  className={className}
+                  type={type}
+                >
+                  {text}
+                </button>
+              )
+            )}
+          </div>
+        ))}
       </div>
     </React.Fragment>
   );
