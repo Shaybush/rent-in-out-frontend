@@ -241,11 +241,12 @@ const CreatePostAlternativeSecondForm = ({
           closeUploadSection,
           handleUpload,
           isDisable
-        ).map((buttonsGroup) => (
-          <div>
+        ).map((buttonsGroup, i) => (
+          <div key={i}>
             {buttonsGroup.map(
               ({ handleClick, disabled, className, type, text }) => (
                 <button
+                  key={text}
                   onClick={handleClick}
                   disabled={disabled}
                   className={className}
