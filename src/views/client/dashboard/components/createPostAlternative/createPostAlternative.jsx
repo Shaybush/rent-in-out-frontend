@@ -6,7 +6,7 @@ import CreatePostAlternativeFirstForm from "../createPostAlternativeFirstForm/cr
 import CreatePostAlternativeSecondForm from "../createPostAlternativeSecondForm/createPostAlternativeSecondForm";
 
 const CreatePostAlternative = ({ setOnAdd }) => {
-  const [display, setDisplay] = useState(false);
+  const [display, setDisplay] = useState(true);
   const [col, setCol] = useState(1);
   const [data, setData] = useState({
     title: "",
@@ -54,7 +54,7 @@ const CreatePostAlternative = ({ setOnAdd }) => {
             />
           </div>
         </div>
-        {!display && (
+        {display ? (
           <CreatePostAlternativeFirstForm
             data={data}
             handleOnChange={handleOnChange}
@@ -64,8 +64,7 @@ const CreatePostAlternative = ({ setOnAdd }) => {
             images={images}
             setOnAdd={setOnAdd}
           />
-        )}
-        {display && (
+        ) : (
           <CreatePostAlternativeSecondForm
             col={col}
             setCol={setCol}
@@ -77,6 +76,7 @@ const CreatePostAlternative = ({ setOnAdd }) => {
             setOnAdd={setOnAdd}
           />
         )}
+        {/* TODO - add buttons here. Make sure back button present just in the second step form */}
         <div className="flex justify-center"></div>
       </main>
     </Wrapper>
