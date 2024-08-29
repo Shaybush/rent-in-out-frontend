@@ -8,7 +8,7 @@ import { doGetApiMethod } from "../../../../../api/services/axios-service/axios-
 import { deleteOnCancel } from "../../../../../api/services/cloudinary-service/cloudinary-service";
 import Minus from "../../../../../assets/icons/minus";
 import { uploadPost } from "../../../../../redux/features/postsSlice";
-import { errorHandler } from "../../../../../util/functions";
+import { dateToString, errorHandler } from "../../../../../util/functions";
 import { getButtonsProps } from "./createPostAlternativeSecondFormProps";
 
 const CreatePostAlternativeSecondForm = ({
@@ -27,7 +27,7 @@ const CreatePostAlternativeSecondForm = ({
   const [suggestions, setSuggestions] = useState([]);
   const [selectedAddresses, setSelectedAddresses] = useState([]);
   const [marker, setMarker] = useState(null);
-  console.log(selectedAddresses);
+  const [map, setMap] = useState(null);
 
   useEffect(() => {
     getCategories();
@@ -35,6 +35,7 @@ const CreatePostAlternativeSecondForm = ({
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: "© OpenStreetMap contributors",
     }).addTo(mapInstance);
+    setMap(mapInstance);
 
     return () => mapInstance.remove();
   }, []);
@@ -172,7 +173,7 @@ const CreatePostAlternativeSecondForm = ({
         <div className="w-full text-start">
           <small className="ml-1">available from</small>
           <input
-            value={data?.available_from}
+            value={dateToString(data?.available_from)}
             type="date"
             name="available_from"
             onChange={handleOnChange}
