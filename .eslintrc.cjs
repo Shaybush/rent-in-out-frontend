@@ -92,37 +92,6 @@ module.exports = {
     'import/exports-last': 'warn', // Ensure all exports appear after other statements.
     'import/extensions': ['warn', 'never', { js: 'always' }],
     // - about import/extensions = Ensures consistent use of file extension on import path. it also had "'always', { ignorePackages: true }", which made internal packages fail at runtime if I enable this (api-gateway is an example case).
-    'import/order': [
-      // The given rule enforces a convention in the order of require() / import statements!
-      'warn',
-      {
-        pathGroups: [
-          { pattern: 'react', group: 'builtin' },
-          { pattern: '@/**', group: 'internal' },
-          { pattern: '@!(/)**', group: 'external' },
-        ],
-        pathGroupsExcludedImportTypes: ['react'],
-        'newlines-between': 'never',
-        groups: [
-          // Level 1: builtin modules - i.e. import fs from 'fs' & import path from 'path'
-          'builtin',
-          // Level 2: external modules - i.e. import clsx from 'clsx'
-          'external',
-          // Level 4: internal modules - i.e. import foo from 'src/foo';
-          'internal',
-          // Level 5: modules from a "parent" directory - i.e. import foo from '../foo' & import foo from '../../foo'
-          'parent',
-          // Level 6: "sibling" modules from the same or a sibling's directory - i.e. import bar from './bar' & import baz from './bar/baz'
-          'sibling',
-          // Level 7: "index" of the current directory - i.e. import main from './'
-          'index',
-          // Level 8: only available in TypeScript
-          'object',
-          // Level 9: only available in TypeScript
-          'type',
-        ],
-      },
-    ],
     // 'import/prefer-default-export': 'error', // Uncomment this if you only want to see export default and to disallow export { someVariable }.
     // 'import/newline-after-import': 'error', // Always make sure there's a new line after the last import statement.
     // 'import/named': 'error', // When you import { servicename } from './A.js' but A doesn't contain an export { servicename }, you'll get a servicename not found in './A.js' eslint (import/named). I disabled this, because I get the same effect from typescript.
