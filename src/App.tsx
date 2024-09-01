@@ -5,11 +5,6 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import store from './redux/store.js';
 
 function App() {
-	const example: Record<string, string> = {
-		hello: 'world',
-	};
-	console.log(example);
-
 	return (
 		<GoogleOAuthProvider clientId={`${import.meta.env.VITE_GOOGLE_AUTH_CLIENT_ID}`}>
 			<Provider store={store}>
