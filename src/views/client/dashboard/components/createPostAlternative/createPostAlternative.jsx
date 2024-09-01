@@ -74,8 +74,6 @@ const CreatePostAlternative = ({ setOnAdd }) => {
             setOnAdd={setOnAdd}
           />
         )}
-        {/* TODO - add buttons here. Make sure back button present just in the second step form */}
-        <div className="flex justify-center"></div>
       </main>
     </Wrapper>
   );
