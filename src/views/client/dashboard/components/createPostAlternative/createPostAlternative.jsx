@@ -32,11 +32,9 @@ const CreatePostAlternative = ({ setOnAdd }) => {
   }, [images]);
 
   const handleOnChange = (e) => {
-    if (e) {
-      setData({ ...data, [e.target.name]: e.target.value });
-    } else {
-      setData({ ...data, img: images });
-    }
+    e
+      ? setData({ ...data, [e.target.name]: e.target.value })
+      : setData({ ...data, img: images });
   };
 
   return (

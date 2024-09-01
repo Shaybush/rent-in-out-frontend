@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ImageFill from "../../../../../assets/icons/imageFill";
 import {
   deleteOnCancel,
@@ -17,7 +17,7 @@ const CreatePostAlternativeFirstForm = ({
 }) => {
   const [isDisable, setIsDisable] = useState(true);
 
-  useMemo(() => {
+  useEffect(() => {
     setIsDisable(
       !(data.title.length > 0 && data.info.length > 0 && data.img.length > 0)
     );
@@ -43,7 +43,7 @@ const CreatePostAlternativeFirstForm = ({
   };
 
   return (
-    <React.Fragment>
+    <>
       <form className="h-80 capitalize overflow-auto flex flex-col gap-2">
         <div className="flex flex-col w-full gap-2">
           {/* post title */}
@@ -124,7 +124,7 @@ const CreatePostAlternativeFirstForm = ({
           Next
         </button>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 
