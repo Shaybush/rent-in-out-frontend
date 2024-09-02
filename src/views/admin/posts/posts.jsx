@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Wrapper } from "../../../assets/styles/wrappers/table";
 import { doGetApiMethod } from "../../../api/services/axios-service/axios-service";
 import PageNav from '../../../shared/UI/page-nav/page-nav';
-import Controllers from "../../../shared/components/controllers/controllers";
+import Controllers from "../../../shared/components/controllers/Controllers.tsx";
 import SinglePost from "./singlePost/singlePost";
 
 const Posts = () => {
