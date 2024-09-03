@@ -13,12 +13,16 @@ export const getLinks = (user: { role: string }, isLogin: boolean, wishList: [])
 		text: 'Dashboard',
 		spanClassName: 'ml-3',
 	},
-	user.role === 'admin' && {
-		to: '/admin/home',
-		component: <Home color={'#6B7280'} />,
-		text: 'Home Admin',
-		spanClassName: 'ml-3',
-	},
+	...(user.role === 'admin'
+		? [
+				{
+					to: '/admin/home',
+					component: <Home color={'#6B7280'} />,
+					text: 'Home Admin',
+					spanClassName: 'ml-3',
+				},
+			]
+		: []),
 	{
 		to: '/',
 		component: <Search color={'#6B7280'} />,
