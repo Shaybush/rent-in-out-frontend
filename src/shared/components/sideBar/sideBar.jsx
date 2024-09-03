@@ -2,21 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { onLogout, onRegisterShow, onSearchToggle } from '../../../redux/features/toggleSlice';
+import { getLinks } from './sideBarProps';
 
 //style
 import { Wrapper } from '../../../assets/styles/wrappers/sideBar';
 
 // icons import
-import Dashboard from '../../../assets/icons/dashboard';
-import Home from '../../../assets/icons/home';
-import Notifications from '../../../assets/icons/notifications';
-import Profile from '../../../assets/icons/profile';
-import Search from '../../../assets/icons/search';
 import SignOut from '../../../assets/icons/signOut';
-import WishList from '../../../assets/icons/wishlist';
 import { secret } from '../../../util/secrets';
-import CircleBadge from '../circleBadge';
-import { getLinks } from './sideBarProps';
 
 const SideBar = () => {
 	const dispatch = useDispatch();
