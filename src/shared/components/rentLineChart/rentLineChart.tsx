@@ -1,7 +1,5 @@
 import { format, fromUnixTime } from 'date-fns';
-import React from 'react';
 import { Area, AreaChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-// eslint-disable-next-line import/extensions
 import { isArrayEmpty } from '../../../util/functions';
 
 interface IRentLineChartPropsModel {

@@ -1,5 +1,4 @@
 import { Bar, BarChart, CartesianGrid, Cell, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-// eslint-disable-next-line import/extensions
 import { isArrayEmpty, randomSetOfColors } from '../../../util/functions';
 
 interface IRentBarChartPropsModel {
