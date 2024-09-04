@@ -2,57 +2,6 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { doApiMethod, doGetApiMethod } from '../../api/services/axios-service/axios-service';
 import { errorHandler } from '../../util/functions';
 
-export const deletePost = createAsyncThunk('posts/delete', async ({ id, name }) => {
-	try {
-		if (window.confirm(`Are you sure you want to delete "${name}"`)) {
-			const url = `/posts/${id}`;
-			await doApiMethod(url, 'DELETE');
-			return id;
-		}
-	} catch (error) {
-		errorHandler(error);
-	}
-});
-export const getPosts = createAsyncThunk(
-	'posts/get',
-	async ({ option = 'createdAt', page = 1, endScreenEnd, setPage, searchParams }) => {
-		try {
-			if (page === 1) clearPosts();
-			let url = `/posts/search?searchQ=${searchParams.get(
-				's'
-			)}&page=${page}&reverse=yes&sort=${option}&max=${searchParams.get(
-				'price_max'
-			)}&min=${searchParams.get('price_min')}&categories=${searchParams.get('categories')}`;
-			let { data } = await doGetApiMethod(url);
-			if (data.count > 0) {
-				endScreenEnd();
-				setPage(page + 1);
-			}
-			return data;
-		} catch (error) {
-			errorHandler(error);
-		}
-	}
-);
-export const likePost = createAsyncThunk('likePost/like', async ({ id }) => {
-	try {
-		const url = `/posts/likePost/${id}`;
-		let { data } = await doApiMethod(url, 'POST');
-		return { data, id };
-	} catch (error) {
-		errorHandler(error);
-	}
-});
-export const uploadPost = createAsyncThunk('uploadPost/upload', async (post) => {
-	try {
-		const url = '/posts';
-		let { data } = await doApiMethod(url, 'POST', post);
-		return data;
-	} catch (error) {
-		errorHandler(error);
-	}
-});
-
 // Initial values for state
 const initialState = {
 	posts: [],
@@ -136,6 +85,57 @@ const postsSlice = createSlice({
 				state.error = action.payload;
 			});
 	},
+});
+
+export const deletePost = createAsyncThunk('posts/delete', async ({ id, name }) => {
+	try {
+		if (window.confirm(`Are you sure you want to delete "${name}"`)) {
+			const url = `/posts/${id}`;
+			await doApiMethod(url, 'DELETE');
+			return id;
+		}
+	} catch (error) {
+		errorHandler(error);
+	}
+});
+export const getPosts = createAsyncThunk(
+	'posts/get',
+	async ({ option = 'createdAt', page = 1, endScreenEnd, setPage, searchParams }) => {
+		try {
+			if (page === 1) clearPosts();
+			let url = `/posts/search?searchQ=${searchParams.get(
+				's'
+			)}&page=${page}&reverse=yes&sort=${option}&max=${searchParams.get(
+				'price_max'
+			)}&min=${searchParams.get('price_min')}&categories=${searchParams.get('categories')}`;
+			let { data } = await doGetApiMethod(url);
+			if (data.count > 0) {
+				endScreenEnd();
+				setPage(page + 1);
+			}
+			return data;
+		} catch (error) {
+			errorHandler(error);
+		}
+	}
+);
+export const likePost = createAsyncThunk('likePost/like', async ({ id }) => {
+	try {
+		const url = `/posts/likePost/${id}`;
+		let { data } = await doApiMethod(url, 'POST');
+		return { data, id };
+	} catch (error) {
+		errorHandler(error);
+	}
+});
+export const uploadPost = createAsyncThunk('uploadPost/upload', async (post) => {
+	try {
+		const url = '/posts';
+		let { data } = await doApiMethod(url, 'POST', post);
+		return data;
+	} catch (error) {
+		errorHandler(error);
+	}
 });
 
 export const { clearPosts, setIsChange, setPostEdit } = postsSlice.actions;

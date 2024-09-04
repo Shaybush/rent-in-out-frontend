@@ -13,26 +13,6 @@ interface ICollectPoints {
 	label: string;
 }
 
-interface ProfileImage {
-	url: string;
-	img_id: string;
-	_id: string;
-}
-
-interface Creator {
-	fullName: {
-		firstName: string;
-		lastName: string;
-	};
-	_id: string;
-	email: string;
-	phone: string;
-	country: string;
-	city: string;
-	createdAt: number;
-	profile_img: ProfileImage;
-}
-
 export interface ICardPropsModel {
 	_id: string;
 	title: string;

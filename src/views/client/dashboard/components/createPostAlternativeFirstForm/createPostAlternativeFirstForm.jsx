@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ImageFill from '../../../../../assets/icons/imageFill';
 import { deleteOnCancel, deleteSingleImage } from '../../../../../api/services/cloudinary-service/cloudinary-service';
 import { errorHandler } from '../../../../../util/functions';
-import { ImagePreview } from '../../../../../shared/components/image-preview/ImagePreview.tsx';
+import { ImagePreview } from '../../../../../shared/components/image-preview/ImagePreview';
 
 const CreatePostAlternativeFirstForm = ({
 	data,

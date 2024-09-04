@@ -36,14 +36,15 @@ export default function PageNav({ urlPageApi, perPage, cssClass, setPage, page, 
 				onMouseOver={() => setOverL(true)}
 				onMouseLeave={() => setOverL(false)}
 				onClick={() => {
-					page <= 1 ? setPage(pages) : setPage(page - 1);
+					const newPage = page <= 1 ? pages : page - 1;
+					setPage(newPage);
 					setIsChange(true);
 				}}
 			>
 				{overL ? (
-					<ArrowLeftFill color='gray' className='hover:shadow' width={'32'} height={'32'} />
+					<ArrowLeftFill color='gray' styleClass='hover:shadow' width={'32'} height={'32'} />
 				) : (
-					<ArrowLeft color='gray' className='hover:shadow' width={'32'} height={'32'} />
+					<ArrowLeft color='gray' styleClass='hover:shadow' width={'32'} height={'32'} />
 				)}
 				Prev
 			</span>
@@ -52,15 +53,16 @@ export default function PageNav({ urlPageApi, perPage, cssClass, setPage, page, 
 				onMouseOver={() => setOverR(true)}
 				onMouseLeave={() => setOverR(false)}
 				onClick={() => {
-					page >= pages ? setPage(1) : setPage(page + 1);
+					const newPage = page >= pages ? 1 : page + 1;
+					setPage(newPage);
 					setIsChange(true);
 				}}
 			>
 				Next
 				{overR ? (
-					<ArrowRightFill color='gray' className='hover:shadow' width={'32'} height={'32'} />
+					<ArrowRightFill color='gray' styleClass='hover:shadow' width={'32'} height={'32'} />
 				) : (
-					<ArrowRight color='gray' className='hover:shadow' width={'32'} height={'32'} />
+					<ArrowRight color='gray' styleClass='hover:shadow' width={'32'} height={'32'} />
 				)}
 			</span>
 		</div>

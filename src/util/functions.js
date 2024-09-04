@@ -2,6 +2,11 @@ import clsx from 'clsx';
 import { toast } from 'react-toastify';
 import { twMerge } from 'tailwind-merge';
 
+/** switch navigate number */
+const switchTimeStampToFeatureResult = (unix) => {
+	return unix * -1;
+};
+
 /** return left time to the date  */
 export const availableTimeStampHelper = (date) => {
 	const currentTime = Math.floor(Date.now() / 1000); // Current Unix time in seconds
@@ -76,11 +81,6 @@ export const errorHandler = (err) => {
 		progress: undefined,
 		theme: 'light',
 	});
-};
-
-/** switch navigate number */
-const switchTimeStampToFeatureResult = (unix) => {
-	return unix * -1;
 };
 
 /** change input from password to text */

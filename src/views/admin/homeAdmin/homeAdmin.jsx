@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import RentBarChart from '../../../shared/components/rentBarChart';
 import RentCard from '../../../shared/components/rentCard';
 import RentLineChart from '../../../shared/components/rentLineChart';
@@ -9,7 +8,6 @@ import PostsWizard from './components/postsWizard/postsWizard';
 import { doGetApiMethod } from '../../../api/services/axios-service/axios-service';
 
 const HomeAdmin = () => {
-	const user = useSelector((state) => state.userSlice.user);
 	const [usersCount, setUsersCount] = useState(0);
 	const [categoriesCount, setCategoriesCount] = useState(0);
 	const [postCount, setPostsCount] = useState(0);
@@ -68,30 +66,6 @@ const HomeAdmin = () => {
 			};
 		});
 	};
-
-	// config
-	const data = [
-		{
-			name: 1687368739,
-			users: 30,
-		},
-		{
-			name: 1689960739,
-			users: 40,
-		},
-		{
-			name: 1692639139,
-			users: 200,
-		},
-		{
-			name: 1695317539,
-			users: 180,
-		},
-		{
-			name: 1697909539,
-			users: 300,
-		},
-	];
 
 	return (
 		<React.Fragment>

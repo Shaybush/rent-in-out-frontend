@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import jwt_decode from 'jwt-decode';
 import React, { Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
