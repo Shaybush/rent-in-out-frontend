@@ -55,8 +55,7 @@ const toggleSlice = createSlice({
 			state.showInbox = false;
 		},
 		onPostToggle: (state, action) => {
-			state.postShow.active ? (state.postShow.active = false) : (state.postShow.active = true);
-			// state.postShow.active = !state.postShow.active;
+			state.postShow.active = !state.postShow.active; // Simplified toggle logic
 			state.postShow.post = action.payload;
 		},
 	},

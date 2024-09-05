@@ -1,1 +1,1 @@
-export { default } from "./Controllers.tsx";
+export { default } from './Controllers';

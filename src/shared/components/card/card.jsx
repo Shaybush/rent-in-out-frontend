@@ -23,9 +23,10 @@ const Card = ({ post }) => {
 			<div
 				className='relative cursor-pointer'
 				onDoubleClick={() => {
-					!user ? dispatch(onRegisterShow()) : dispatch(likePost({ id: post._id }));
-					if (post.creator_id._id !== user?._id) {
-						dispatch(updateWishList(post));
+					if (!user) dispatch(onRegisterShow());
+					else {
+						dispatch(likePost({ id: post._id }));
+						if (post.creator_id._id !== user?._id) dispatch(updateWishList(post));
 					}
 					dispatch(setIsChange());
 				}}
