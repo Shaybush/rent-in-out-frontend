@@ -3,8 +3,8 @@ import { Rings } from 'react-loader-spinner';
 interface ILoadingButtonPropsModel {
 	isLoading: boolean;
 	children: string;
-	height: number;
-	width: number;
+	height?: number;
+	width?: number;
 }
 
 const LoadingButton = ({ isLoading, children, height = 24, width = 24 }: ILoadingButtonPropsModel) => {

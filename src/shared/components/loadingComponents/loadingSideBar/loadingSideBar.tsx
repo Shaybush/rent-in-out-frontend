@@ -1,4 +1,8 @@
-const LoadingSideBar = ({ barsCount = 1 }) => {
+interface ILoadingSideBarPropsModel {
+	barsCount?: number;
+}
+
+const LoadingSideBar = ({ barsCount = 1 }: ILoadingSideBarPropsModel) => {
 	return (
 		<div
 			role='status'

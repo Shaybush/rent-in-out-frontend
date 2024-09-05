@@ -7,8 +7,8 @@ interface IRentBarChartPropsModel {
 	width?: string;
 	height?: string;
 	backgroundColor?: string;
-	activeLegend: boolean;
-	opacity: number;
+	activeLegend?: boolean;
+	opacity?: number;
 }
 
 const RentBarChart = ({

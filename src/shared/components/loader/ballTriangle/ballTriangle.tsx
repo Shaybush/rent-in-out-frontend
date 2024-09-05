@@ -1,10 +1,10 @@
 import { BallTriangle } from 'react-loader-spinner';
 
 interface IBallTriangleLoaderPropsModel {
-	load: boolean;
+	load?: boolean;
 	height: string;
 	width: string;
-	color: string;
+	color?: string;
 }
 
 const BallTriangleLoader = ({ load = true, height, width, color = '#97aef8' }: IBallTriangleLoaderPropsModel) => {

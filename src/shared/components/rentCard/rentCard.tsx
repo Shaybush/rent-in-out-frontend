@@ -1,5 +1,5 @@
 interface IRentCardPropsModel {
-	children?: string;
+	children: string;
 	styleClass: string;
 	isColored?: boolean;
 	bottomColor?: string;

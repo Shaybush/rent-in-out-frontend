@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import ExitFill from '../../../assets/icons/exitFill';
 
-interface IImagePreviewpROPSmODEL {
+interface IImagePreviewPropsModel {
 	id: string;
 	src: string;
 	alt: string;
 	onDeleteImg: (imgId: string) => void;
 }
 
-export const ImagePreview = ({ id, src, alt, onDeleteImg }: IImagePreviewpROPSmODEL) => {
+export const ImagePreview = ({ id, src, alt, onDeleteImg }: IImagePreviewPropsModel) => {
 	const [isCloseShown, setIsCloseShown] = useState(false);
 
 	const imgStyle = {

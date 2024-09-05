@@ -4,8 +4,13 @@ import { Area, AreaChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, X
 // eslint-disable-next-line import/extensions
 import { isArrayEmpty } from '../../../util/functions';
 
+interface IRentLineChartConfigModel {
+	name: string;
+	[key: string]: number | string;
+}
+
 interface IRentLineChartPropsModel {
-	config: [];
+	config: IRentLineChartConfigModel[];
 	width?: string;
 	height?: string;
 	backgroundColor?: string;

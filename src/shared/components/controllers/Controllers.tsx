@@ -1,10 +1,14 @@
 import React from 'react';
 // should send title options and set search set option
 // controllers of all the tables
-interface IControllerProps {
+type IOption = {
+	name: string;
+	value: string;
+};
+interface IControllerPropsModel {
 	title: string;
 	placeHolder?: string;
-	options: { name: string; value: string }[];
+	options: IOption[];
 	handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	handleOptionChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
@@ -15,7 +19,7 @@ const Controllers = ({
 	options,
 	handleSearchChange,
 	handleOptionChange,
-}: IControllerProps) => {
+}: IControllerPropsModel) => {
 	return (
 		<div className='flex flex-wrap controllers'>
 			<div className='title w-full text-center'>
