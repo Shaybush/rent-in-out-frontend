@@ -16,13 +16,17 @@ const SideBar = () => {
 	const { user, wishList } = useSelector((state) => state.userSlice);
 	const isLogin = useSelector((state) => state.userSlice?.user !== null);
 	const [selectedRoute, setSelectedRoute] = useState('');
-	const [links] = useState(getLinks(user, isLogin, wishList));
+	const [links, setLinkes] = useState();
+
+	useEffect(() => {
+		setLinkes(getLinks(user, isLogin, wishList));
+	}, [user, isLogin, wishList]);
 
 	return (
 		<Wrapper className='lg:w-2/12 z-10 p-1 top-16 -left-1 lg:fixed' aria-label='Sidebar'>
 			<div className='overflow-y-auto py-4 mt-4 px-3 w-full bg-white shadow-xl rounded'>
 				<ul className='space-y-2'>
-					{links.map(({ to, component, text, secondComponent, spanClassName }) => {
+					{links?.map(({ to, component, text, secondComponent, spanClassName }) => {
 						return (
 							<Link
 								className={`${selectedRoute === text && 'bg-gray-100'}`}

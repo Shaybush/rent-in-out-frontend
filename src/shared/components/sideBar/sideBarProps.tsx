@@ -13,7 +13,7 @@ export const getLinks = (user: { role: string }, isLogin: boolean, wishList: [])
 		text: 'Dashboard',
 		spanClassName: 'ml-3',
 	},
-	...(user.role === 'admin'
+	...(user?.role === 'admin'
 		? [
 				{
 					to: '/admin/home',
