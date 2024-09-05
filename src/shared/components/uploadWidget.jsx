@@ -21,7 +21,7 @@ export function useUploadWidget({
 	const maxImageFileSize = maxImageFileSizeMB * 1024 * 1024; // Convert to bytes
 
 	// documentation here - https://cloudinary.com/documentation/upload_widget_reference
-	let myWidget = window.cloudinary.createUploadWidget(
+	const myWidget = window.cloudinary.createUploadWidget(
 		{
 			cloudName: secret.CLOUDINARY_NAME, // cloudinary cloud name
 			uploadPreset: secret.CLOUDINARY_PRESET, // cloudinary upload preset
@@ -39,7 +39,7 @@ export function useUploadWidget({
 		},
 		async (error, result) => {
 			if (!error && result && result.event === 'success') {
-				setIsLoading(false);
+				setIsLoading(true);
 				let image = {
 					url: result.info.url,
 					img_id: result.info.public_id,
@@ -60,6 +60,7 @@ export function useUploadWidget({
 						img_id: profile_img?.img_id,
 						type: folder,
 					});
+				setIsLoading(false);
 			}
 		}
 	);

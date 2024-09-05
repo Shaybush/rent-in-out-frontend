@@ -9,16 +9,15 @@ const BannerProfile = () => {
 	const { cover_img, profile_img } = useSelector((state) => state.userSlice?.user);
 
 	// eslint-disable-next-line no-unused-vars
-	const [banner, setBanner, loadBanner] = useUploadWidget({
+	const [banner, bannerCloudinaryModal, setBanner, loadBanner] = useUploadWidget({
 		userID: user._id,
 		folder: 'banner',
 		cropping: true,
 		showSkipCropButton: true,
 		single: true,
 	});
-
 	// eslint-disable-next-line no-unused-vars
-	const [profile, setProfile, loadImg] = useUploadWidget({
+	const [profile, profileCloudinaryModal, setProfile, loadImg] = useUploadWidget({
 		userID: user._id,
 		folder: 'profile',
 		cropping: true,
@@ -56,7 +55,7 @@ const BannerProfile = () => {
 					<label className='custom-file-upload'>
 						<div
 							onClick={() => {
-								setProfile.open();
+								profileCloudinaryModal.open();
 							}}
 						>
 							<FaCamera className='cursor-pointer' />
@@ -65,7 +64,7 @@ const BannerProfile = () => {
 				</span>
 				<span
 					onClick={() => {
-						setBanner.open();
+						bannerCloudinaryModal.open();
 					}}
 					className='absolute bottom-2 right-5 text-gray-800 bg-gray-300 rounded-full p-2 hover:text-gray-500'
 				>
